@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-body{
-  background: linear-gradient(to bottom left, #0a0f55, #000000, #0a0f55);
+body {
+  width: 100vw;
+  height: 100vh;
+  margin: 0; /* Évite les marges par défaut */
+  /*background: linear-gradient(to bottom right, #0a0f55 0%, #03020c 50%, #0a0f55 100%);*/
 }
