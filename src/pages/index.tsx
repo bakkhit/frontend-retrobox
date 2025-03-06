@@ -12,7 +12,7 @@ export default function Home() {
           <a href="#" className="text-white border border-white px-2 py-1 rounded-full">Actualités</a>
           <a href="#" className="text-white border border-white px-2 py-1 rounded-full">Boutique</a>
         </nav>
-        <a href="../pages/LogIn.tsx" className="text-white border border-white px-2 py-1 rounded-full ml-auto">Connexion</a>
+        <a href="../page/LogIn" className="text-white border border-white px-2 py-1 rounded-full ml-auto">Connexion</a>
       </header>
 
       <main className="flex flex-col md:flex-row justify-around bg-black h-fit">
@@ -60,7 +60,7 @@ export default function Home() {
               <label className="text-white"><input type="radio" name="rating1" value="3" /> 3</label>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4 p-4">
-              <aside className="w-fit ml-[15%]">
+              <aside className="w-fit ml-[35%]">
                 <h4 className="text-white m-[14%] text-3xl">Genre</h4>
                 <label className="block text-white m-[14%]"><input type="checkbox" className="mr-2" />Action</label>
                 <label className="block text-white m-[14%]"><input type="checkbox" className="mr-2" />Aventure</label>
@@ -168,7 +168,37 @@ export default function Home() {
               <label className="text-white"><input type="radio" name="rating1" value="3" /> 3</label>
             </div>
           </div>
-          <footer className="h-[336px] bg-blue-700"></footer>
+          <footer className="h-[336px] bg-blue-700">
+            <div className="text-white mt-10 ml-[11%] text-4xl font-thin mb-[1%]">
+              <h2>Retro</h2>
+              <h2>Box</h2>
+            </div>
+            <div className="grid grid-cols-3 ml-[11%] w-fit gap-[70px]">
+              <div className="text-white font-thin">
+                <p className="font-medium mb-[1%]">Infos</p>
+                <a href="#" className="block">Mentions juridique</a>
+                <a href="#" className="block">Politique de confidentialité</a>
+                <a href="#" className="block">Conditions d'utilisation du site web</a>
+                <a href="#" className="block">Plan du site</a>
+              </div>
+              <div className="text-white font-thin">
+                <p className="font-medium mb-[1%]">Valeurs</p>
+                <a href="#" className="block">Environnement</a>
+                <a href="#" className="block">Accessibilité</a>
+                <a href="#" className="block">Confidentialité en ligne</a>
+              </div>
+              <div className="text-white font-thin">
+                <p className="font-medium mb-[1%]">Connexion</p>
+                <a href="#" className="block">Application iOS</a>
+                <a href="#" className="block">Application Android</a>
+                <div className="flex gap-2 mt-2 l-0">
+                  <a href="#"><Image src="/images/Instagram.png" alt="Image Console" width={30} height={30} /></a>
+                  <a href="#"><Image src="/images/Facebook.png" alt="Image Console" width={30} height={30} /></a>
+                  <a href="#"><Image src="/images/Youtube.png" alt="Image Console" width={30} height={30} /></a>
+                </div>
+              </div>
+            </div>
+          </footer>
         </div>
       </section>
     </div>
