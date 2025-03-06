@@ -1,9 +1,9 @@
 import React from 'react';
 import Image from "next/image";
 
-const LogIn = () => {
+const Console = () => {
   return (
-    <div className='w-[100vw] h-[100vh] bg-neutral-300 relative flex flex-col items-center justify-center'>
+    <div className='w-[100vw] h-[100vh] bg-neutral-300 relative flex flex-col items-center'>
       <header className='flex items-center p-4 z-20 w-full absolute top-0'>
         <div className='flex flex-col'>
           <a href="/">
@@ -26,16 +26,15 @@ const LogIn = () => {
           </div>
         </div>
       </header>
-      <div className='w-[50vw] h-[100%] bg-neutral-600 absolute top-0 right-0 z-10 flex flex-col items-center justify-center'>
-        <div className='w-[20vh] h-[20vh] rounded-full bg-gray-300 mb-[10%]'></div>
-        <input type='email' placeholder='Adresse e-mail' className='mb-4 p-2 rounded-full w-[70%] bg-neutral-300 text-white' />
-        <input type='password' placeholder='Mot de passe' className='mb-4 p-2 rounded-full w-[70%] bg-neutral-300 text-white' />
-        <button className='mb-4 p-2 bg-neutral-100 text-black rounded-full w-[70%]'>Suivant</button>
-        <a href='#' className='mb-4 text-white'>Problème de connexion ?</a>
-        <a href='#' className='mt-10 p-2 bg-neutral-100 text-black rounded-full w-[70%] text-center'>Créer un compte</a>
+      <div className='w-[80%] mt-24'>
+        <h1 className='font-thin text-5xl text-left'>Console</h1>
+        <div className='flex items-center justify-center gap-4 mt-8'>
+          <div className='w-[448px] h-[541px] bg-neutral-200 rounded-[8%]'></div>
+          <div className='w-[596px] h-[541px] bg-neutral-200 rounded-[8%]'></div>
+        </div>
       </div>
     </div>
   );
 };
 
-export default LogIn;
+export default Console;
