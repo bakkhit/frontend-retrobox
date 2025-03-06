@@ -6,11 +6,11 @@ export default function Home() {
       <header className="sticky top-0 w-[100%] h-20 flex justify-between items-center bg-blue-500 px-4">
         <p className="text-white font-bold">RetroBox</p>
         <nav className="flex gap-4 ml-4">
-          <a href="#" className="text-white border border-white px-2 py-1 rounded-full">Retrobox</a>
-          <a href="#" className="text-white border border-white px-2 py-1 rounded-full">Jeux</a>
-          <a href="#" className="text-white border border-white px-2 py-1 rounded-full">Console</a>
-          <a href="#" className="text-white border border-white px-2 py-1 rounded-full">Actualités</a>
-          <a href="#" className="text-white border border-white px-2 py-1 rounded-full">Boutique</a>
+          <a href="../page/retrobox" className="text-white border border-white px-2 py-1 rounded-full">Retrobox</a>
+          <a href="../page/jeux" className="text-white border border-white px-2 py-1 rounded-full">Jeux</a>
+          <a href="../page/console" className="text-white border border-white px-2 py-1 rounded-full">Console</a>
+          <a href="../page/actualite" className="text-white border border-white px-2 py-1 rounded-full">Actualités</a>
+          <a href="../page/shop" className="text-white border border-white px-2 py-1 rounded-full">Boutique</a>
         </nav>
         <a href="../page/LogIn" className="text-white border border-white px-2 py-1 rounded-full ml-auto">Connexion</a>
       </header>
