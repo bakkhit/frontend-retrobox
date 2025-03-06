@@ -15,7 +15,7 @@ export default function Home() {
         <a href="../page/LogIn" className="text-white border border-white px-2 py-1 rounded-full ml-auto">Connexion</a>
       </header>
 
-      <main className="flex flex-col md:flex-row justify-around bg-black h-fit">
+      <main className="flex flex-col md:flex-row justify-around bg-slate-950 h-fit">
         <section className="mt-10 ml-4 md:ml-10 w-full md:w-1/4">
           <h1 className="text-blue-700 text-5xl font-bold">La Retrobox</h1><br /><br />
           <p className="text-white">
@@ -35,10 +35,10 @@ export default function Home() {
         <div className="h-fit grid bg-slate-950">
           <h2 className="text-5xl text-white font-thin mt-[15%] mb-[5%] justify-self-center">Console</h2>
           <div className="console-container flex gap-4 justify-center">
-            <div className="w-[332px] h-[572px] bg-zinc-400 rounded-[20px]"></div>
-            <div className="w-[332px] h-[572px] bg-zinc-400 rounded-[20px]"></div>
-            <div className="w-[332px] h-[572px] bg-zinc-400 rounded-[20px]"></div>
-            <div className="w-[332px] h-[572px] bg-zinc-400 rounded-[20px]"></div>
+            <div className="w-[332px] h-[572px] bg-blue-700 rounded-[20px]"></div>
+            <div className="w-[332px] h-[572px] bg-blue-700 rounded-[20px]"></div>
+            <div className="w-[332px] h-[572px] bg-blue-700 rounded-[20px]"></div>
+            <div className="w-[332px] h-[572px] bg-blue-700 rounded-[20px]"></div>
           </div>
           <h2 className="text-5xl text-white font-thin mt-[15%] mb-[5%] justify-self-center">Maintenant Disponible</h2>
           <div className="w-[1376px] h-[580px] bg-zinc-400 justify-self-center mb-[5%]"></div>
