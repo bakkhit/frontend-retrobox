@@ -1,10 +1,44 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import "tailwindcss";
+
+:root {
+  --background: #050d1d;
+  --foreground: #ffffff;
+
+  --primary: #4642ed;
+
+  --h1: 64px;
+  --h2: 40px;
+  --h3: 32px;
+  --h4: 24px;
+  --h5: 20px;
+  --h6: 16px;
+}
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --font-inter: "Inter", system-ui;
+
+  --color-primary: var(--primary);
+
+  --text-h1: var(--h1);
+  --text-h2: var(--h2);
+  --text-h3: var(--h3);
+  --text-h4: var(--h4);
+  --text-h5: var(--h5);
+  --text-h6: var(--h6);
+
+  --leading-h1: calc(var(--h1) - 5px);
+  --leading-h2: calc(var(--h2) - 5px);
+  --leading-h3: calc(var(--h3) - 5px);
+  --leading-h4: calc(var(--h4) - 5px);
+  --leading-h5: calc(var(--h5) - 5px);
+  --leading-h6: calc(var(--h6) - 5px);
+}
 
 body {
-  width: 100%;
-  height: 100vh;
-  margin: 0; /* Évite les marges par défaut */
-  /*background: linear-gradient(to bottom right, #0a0f55 0%, #03020c 50%, #0a0f55 100%);*/
+  background: var(--background);
+  margin: 0;
 }
