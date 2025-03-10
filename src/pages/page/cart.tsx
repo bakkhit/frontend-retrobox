@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from "next/image";
 
-const Console = () => {
+const cart = () => {
   return (
     <div className='w-[100vw] h-[100vh] bg-neutral-300 relative flex flex-col items-center'>
       <header className='flex items-center p-4 z-20 w-full absolute top-0'>
@@ -27,7 +27,7 @@ const Console = () => {
         </div>
       </header>
       <div className='w-fit mt-24'>
-        <h1 className='font-thin text-5xl text-left'>Console</h1>
+        <h1 className='font-thin text-5xl text-left'>Panier</h1>
         <div className='flex items-center justify-center gap-[5%] mt-8'>
           <div className='w-[448px] h-[541px] bg-neutral-200 rounded-[8%]'></div>
           <div className='w-[596px] h-[541px] bg-neutral-200 rounded-[8%]'></div>
@@ -37,4 +37,4 @@ const Console = () => {
   );
 };
 
-export default Console;
+export default cart;
