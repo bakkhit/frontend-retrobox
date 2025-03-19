@@ -34,7 +34,7 @@
   --leading-h2: calc(var(--h2) - 5px);
   --leading-h3: calc(var(--h3) - 5px);
   --leading-h4: calc(var(--h4) - 5px);
-  --leading-h5: calc(var(--h5) - 5px);
+  --leading-h5: calc(var(--h5) + 5px);
   --leading-h6: calc(var(--h6) - 5px);
 }
 

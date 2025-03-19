@@ -11,6 +11,7 @@ interface CTAProps {
   isDisabled?: Bool;
   isLoading?: Bool;
   onClick?: () => void;
+  href?: String;
 }
 
 export const CTA = ({
@@ -20,17 +21,18 @@ export const CTA = ({
   isDisabled,
   isLoading,
   onClick,
+  href,
 }: CTAProps) => {
   let variantSwitcher: String = "";
 
   switch (variant) {
     case "primary":
       variantSwitcher =
-        "w-max h-max rounded-full border border-black py-2.5 px-4 cursor-pointer hover:opacity-70 transition-all duration-200 ease-in-out";
+        "w-max rounded-full border border-white py-2.5 px-4 cursor-pointer hover:opacity-70 transition-all duration-200 ease-in-out";
       break;
     case "secondary":
       variantSwitcher =
-        "w-max h-max rounded-full bg-primary py-2.5 px-4 cursor-pointer hover:opacity-70 transition-all duration-200 ease-in-out";
+        "w-max rounded-full bg-primary py-2.5 px-4 cursor-pointer hover:opacity-70 transition-all duration-200 ease-in-out";
       break;
   }
 
@@ -39,7 +41,8 @@ export const CTA = ({
       className={clsx(
         isDisabled && "cursor-not-allowed opacity-50",
         className,
-        variantSwitcher
+        variantSwitcher,
+        "h-9"
       )}
       disabled={isDisabled || isLoading}
       onClick={isDisabled || isLoading ? (e) => e.preventDefault() : onClick}
@@ -48,8 +51,9 @@ export const CTA = ({
         <AiOutlineLoading3Quarters className="animate-spin" />
       ) : (
         <Typographie
-          variant="h6"
-          color={variant === "primary" ? "black" : "white"}
+          href={href ?? undefined}
+          variant={href ? "a" : "h6"}
+          color={"white"}
           fontFamily="Inter"
         >
           {children}

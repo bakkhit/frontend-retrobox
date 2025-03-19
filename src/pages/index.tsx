@@ -1,79 +1,11 @@
+import { Cards } from "@/components/card/Cards";
+import { Header } from "@/components/header/Header";
 import Image from "next/image";
 
 export default function Home() {
   return (
     <div className="overflow-x-hidden h-fit">
-      <header className="sticky top-0 w-[100%] h-20 flex justify-between items-center bg-blue-500 px-4">
-        <p className="text-white font-bold">RetroBox</p>
-        <nav className="flex gap-4 ml-4">
-          <a
-            href="../routes/retrobox"
-            className="text-white border border-white px-2 py-1 rounded-full"
-          >
-            Retrobox
-          </a>
-          <a
-            href="../routes/jeux"
-            className="text-white border border-white px-2 py-1 rounded-full"
-          >
-            Jeux
-          </a>
-          <a
-            href="../routes/console"
-            className="text-white border border-white px-2 py-1 rounded-full"
-          >
-            Console
-          </a>
-          <a
-            href="../routes/actualite"
-            className="text-white border border-white px-2 py-1 rounded-full"
-          >
-            Actualités
-          </a>
-          <a
-            href="../routes/shop"
-            className="text-white border border-white px-2 py-1 rounded-full"
-          >
-            Boutique
-          </a>
-        </nav>
-        <a
-          href="../page/LogIn"
-          className="text-white border border-white px-2 py-1 rounded-full ml-auto"
-        >
-          Connexion
-        </a>
-      </header>
-
-      <main className="flex flex-col md:flex-row justify-around bg-slate-950 h-fit">
-        <section className="mt-10 ml-4 md:ml-10 w-full md:w-1/4">
-          <h1 className="text-blue-700 text-5xl font-bold">La Retrobox</h1>
-          <br />
-          <br />
-          <p className="text-white">
-            C’est l’occasion parfaite de se rassembler autour de jeux
-            multijoueurs, de partager des émotions et de transmettre une passion
-            de génération en génération. Un cadeau original pour les
-            nostalgiques !<br />
-            <br />
-            Chaque box peut inclure des goodies rétro (t-shirts, posters,
-            porte-clés), des défis pour pimenter les parties, et un code d'accès
-            à des jeux numériques.
-          </p>
-          <br />
-          <button className="border border-black px-2 py-1 rounded-full">
-            Abonnement
-          </button>
-        </section>
-        <section className="w-full md:w-auto">
-          <Image
-            src="/images/consoleImage1.png"
-            alt="Image Console"
-            width={900}
-            height={300}
-          />
-        </section>
-      </main>
+      <Header />
 
       <Image
         src="/images/mario.png"
@@ -82,6 +14,8 @@ export default function Home() {
         width={100}
         height={100}
       />
+
+      <Cards />
 
       <section>
         <div className="h-fit grid bg-slate-950">
