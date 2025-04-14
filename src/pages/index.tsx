@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Header from "../components/header";
 import Footer from "../components/footer";
-import {data} from "../pages/api/games";
+import data from "../pages/api/games";
+import GameShow from "../components/gameShow";
 
 const games = data;
 
@@ -9,7 +10,7 @@ export default function Home() {
   return (
     <div className="h-fit">
       <Header />
-      
+
       <main className="flex flex-col md:flex-row justify-around items-center bg-slate-950 h-fit">
         <section className="mt-10 ml-4 ml-[10%] w-full md:w-1/4">
           <h1 className="neon-text text-blue-700 text-4xl font-medium">La Retrobox</h1><br /><br />
@@ -23,8 +24,10 @@ export default function Home() {
           <Image src="/images/retroboxMockup.png" alt="Image Console" width={900} height={300} />
         </section>
       </main>
-
-      <Image src="/images/mario.png" alt="Mario" layout="responsive" width={100} height={100} />
+      
+      <section>
+        <GameShow data={data} />
+      </section>
 
       <section>
         <div className="h-fit grid bg-slate-950">
