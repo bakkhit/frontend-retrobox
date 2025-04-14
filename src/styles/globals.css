@@ -38,6 +38,17 @@
   --leading-h6: calc(var(--h6) - 5px);
 }
 
+input {
+  background-color: #0a1834;
+  color: white;
+  border-radius: 24px;
+  padding: 10px 20px;
+}
+
+input::placeholder {
+  color: white;
+}
+
 body {
   background: var(--background);
   margin: 0;

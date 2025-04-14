@@ -4,8 +4,8 @@ import { String } from "@/_types/string_type";
 import { useEffect, useState } from "react";
 import { Card } from "./Card";
 
-const BACK_URL = process.env.BACKEND_WEBSITE_URL;
-const BACK_VERSION = process.env.BACKEND_VERSION;
+const BACK_URL = process.env.NEXT_PUBLIC_BACKEND_WEBSITE_URL;
+const BACK_VERSION = process.env.NEXT_PUBLIC_BACKEND_VERSION;
 
 type Consoles_Data = {
   name?: String;

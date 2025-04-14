@@ -1,8 +1,8 @@
 import { Number } from "@/_types/num_type";
 
 interface ContainerProps {
-  paddingX: Number;
-  paddingY: Number;
+  paddingX?: Number;
+  paddingY?: Number;
   children: React.ReactNode;
 }
 
