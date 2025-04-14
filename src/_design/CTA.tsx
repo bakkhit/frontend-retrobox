@@ -7,7 +7,7 @@ import { Typographie } from "./Typography";
 interface CTAProps {
   children: React.ReactNode;
   className?: String;
-  variant: "primary" | "secondary";
+  variant: "primary" | "secondary" | "tertiary" | "quaternary";
   isDisabled?: Bool;
   isLoading?: Bool;
   onClick?: () => void;
@@ -33,6 +33,14 @@ export const CTA = ({
     case "secondary":
       variantSwitcher =
         "w-max rounded-full bg-primary py-2.5 px-4 cursor-pointer hover:opacity-70 transition-all duration-200 ease-in-out";
+      break;
+    case "tertiary":
+      variantSwitcher =
+        "w-full rounded-full bg-primary py-4 h-max px-4 cursor-pointer hover:opacity-70 transition-all duration-200 ease-in-out";
+      break;
+    case "quaternary":
+      variantSwitcher =
+        "w-full rounded-full bg-[#0A1834] py-4 h-max px-4 cursor-pointer hover:opacity-70 transition-all duration-200 ease-in-out";
       break;
   }
 

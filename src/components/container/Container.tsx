@@ -4,12 +4,22 @@ interface ContainerProps {
   paddingX?: Number;
   paddingY?: Number;
   children: React.ReactNode;
+  className?: string;
 }
 
-export const Container = ({ paddingX, paddingY, children }: ContainerProps) => {
+export const Container = ({
+  paddingX,
+  paddingY,
+  children,
+  className,
+}: ContainerProps) => {
   const style = {
     padding: `${paddingY}px ${paddingX}px`,
   };
 
-  return <section style={style}>{children}</section>;
+  return (
+    <section className={className} style={style}>
+      {children}
+    </section>
+  );
 };
