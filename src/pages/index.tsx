@@ -1,31 +1,26 @@
 import Image from "next/image";
+import Header from "../components/header";
+import Footer from "../components/footer";
+import {data} from "../pages/api/games";
+
+const games = data;
 
 export default function Home() {
   return (
-    <div className="overflow-x-hidden h-fit">
-      <header className="sticky top-0 w-[100%] h-20 flex justify-between items-center bg-blue-500 px-4">
-        <p className="text-white font-bold">RetroBox</p>
-        <nav className="flex gap-4 ml-4">
-          <a href="../page/retrobox" className="text-white border border-white px-2 py-1 rounded-full">Retrobox</a>
-          <a href="../page/jeux" className="text-white border border-white px-2 py-1 rounded-full">Jeux</a>
-          <a href="../page/console" className="text-white border border-white px-2 py-1 rounded-full">Console</a>
-          <a href="../page/actualite" className="text-white border border-white px-2 py-1 rounded-full">Actualités</a>
-          <a href="../page/shop" className="text-white border border-white px-2 py-1 rounded-full">Boutique</a>
-        </nav>
-        <a href="../page/LogIn" className="text-white border border-white px-2 py-1 rounded-full ml-auto">Connexion</a>
-      </header>
-
-      <main className="flex flex-col md:flex-row justify-around bg-slate-950 h-fit">
-        <section className="mt-10 ml-4 md:ml-10 w-full md:w-1/4">
-          <h1 className="text-blue-700 text-5xl font-bold">La Retrobox</h1><br /><br />
+    <div className="h-fit">
+      <Header />
+      
+      <main className="flex flex-col md:flex-row justify-around items-center bg-slate-950 h-fit">
+        <section className="mt-10 ml-4 ml-[10%] w-full md:w-1/4">
+          <h1 className="neon-text text-blue-700 text-4xl font-medium">La Retrobox</h1><br /><br />
           <p className="text-white">
             C’est l’occasion parfaite de se rassembler autour de jeux multijoueurs, de partager des émotions et de transmettre une passion de génération en génération. Un cadeau original pour les nostalgiques !<br /><br />
             Chaque box peut inclure des goodies rétro (t-shirts, posters, porte-clés), des défis pour pimenter les parties, et un code d'accès à des jeux numériques.
           </p><br />
-          <button className="border border-black px-2 py-1 rounded-full">Abonnement</button>
+          <button className="border border-white text-white px-2 py-1 rounded-full">Abonnement</button>
         </section>
         <section className="w-full md:w-auto">
-          <Image src="/images/consoleImage1.png" alt="Image Console" width={900} height={300} />
+          <Image src="/images/retroboxMockup.png" alt="Image Console" width={900} height={300} />
         </section>
       </main>
 
@@ -168,37 +163,7 @@ export default function Home() {
               <label className="text-white"><input type="radio" name="rating1" value="3" /> 3</label>
             </div>
           </div>
-          <footer className="h-[336px] bg-blue-700">
-            <div className="text-white mt-10 ml-[11%] text-4xl font-thin mb-[1%]">
-              <h2>Retro</h2>
-              <h2>Box</h2>
-            </div>
-            <div className="grid grid-cols-3 ml-[11%] w-fit gap-[70px]">
-              <div className="text-white font-thin">
-                <p className="font-medium mb-[1%]">Infos</p>
-                <a href="#" className="block">Mentions juridique</a>
-                <a href="#" className="block">Politique de confidentialité</a>
-                <a href="#" className="block">Conditions d'utilisation du site web</a>
-                <a href="#" className="block">Plan du site</a>
-              </div>
-              <div className="text-white font-thin">
-                <p className="font-medium mb-[1%]">Valeurs</p>
-                <a href="#" className="block">Environnement</a>
-                <a href="#" className="block">Accessibilité</a>
-                <a href="#" className="block">Confidentialité en ligne</a>
-              </div>
-              <div className="text-white font-thin">
-                <p className="font-medium mb-[1%]">Connexion</p>
-                <a href="#" className="block">Application iOS</a>
-                <a href="#" className="block">Application Android</a>
-                <div className="flex gap-2 mt-2 l-0">
-                  <a href="#"><Image src="/images/Instagram.png" alt="Image Console" width={30} height={30} /></a>
-                  <a href="#"><Image src="/images/Facebook.png" alt="Image Console" width={30} height={30} /></a>
-                  <a href="#"><Image src="/images/Youtube.png" alt="Image Console" width={30} height={30} /></a>
-                </div>
-              </div>
-            </div>
-          </footer>
+          <Footer />
         </div>
       </section>
     </div>

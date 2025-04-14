@@ -2,9 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
+html, body {
+  overflow: visible;
+}
+
 body {
   width: 100%;
   height: 100vh;
-  margin: 0; /* Évite les marges par défaut */
-  /*background: linear-gradient(to bottom right, #0a0f55 0%, #03020c 50%, #0a0f55 100%);*/
+  margin: 0;
+  overflow: auto;
+}
+
+@font-face {
+  font-family: "silkscreen";
+  src: url("../../public/slkscr.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.neon-text {
+  font-family: "Silkscreen", sans-serif;
+  color: #4642ED;
+  text-shadow:
+    0 0 25px #4642ED,
+    0 0 30px #4642ED,
+    0 0 35px #4642ED;
 }
