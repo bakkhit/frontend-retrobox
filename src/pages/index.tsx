@@ -43,7 +43,7 @@ export default function Home() {
 
           <h1 className="font-[silkscreen] text-white text-center text-5xl mt-20">MAINTENANT DISPONIBLE</h1>
           <LatestLeft data={games} />
-          <RecentRight data={games} />
+          <LatestRight data={games} />
 
           <div className="mb-[5%]">
             <h3 className="justify-self-center text-white text-5xl font-thin">Boutique</h3><br />
