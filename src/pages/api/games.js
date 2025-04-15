@@ -9,7 +9,8 @@ const data = [
         vignette:"/images/gamesImg/vignetteMario.png",
         pegi: 3,
         genre: "Platformer",
-        video:""
+        video:"",
+        color:"#050D1D"
     },
     {
         id: 2,
@@ -21,7 +22,8 @@ const data = [
         vignette:"/images/gamesImg/vignetteDonkeyKong.png",
         pegi: 3,
         genre: "Platformer",
-        video:""
+        video:"",
+        color:"#B70668"
     },
     {
         id: 3,
@@ -33,7 +35,8 @@ const data = [
         vignette:"/images/gamesImg/vignetteCrashBandicoot.png",
         pegi: 7,
         genre: "Platformer",
-        video:""
+        video:"",
+        color:"#617307"
     },
     {
         id: 4,
@@ -45,7 +48,8 @@ const data = [
         vignette:"/images/gamesImg/vignetteFifa.png",
         pegi: 3,
         genre: "Sports",
-        video:""
+        video:"",
+        color:"#3E5B93"
     },
     {
         id: 5,
@@ -57,7 +61,8 @@ const data = [
         vignette:"/images/gamesImg/vignetteCod.png",
         pegi: 18,
         genre: "Shooter",
-        video:""
+        video:"",
+        color:"#433424"
     },
     {
         id: 6,    
@@ -69,7 +74,8 @@ const data = [
         vignette:"/images/gamesImg/vignetteSonic.png",
         pegi: 3,
         genre: "Platformer",
-        video:""
+        video:"",
+        color:"#036303"
     },
     {
         id: 7,
@@ -81,7 +87,8 @@ const data = [
         vignette:"",
         pegi: 12,
         genre: "Action-Adventure",
-        video:"https://www.youtube.com/watch?v=pF7p9hruSeY"
+        video:"https://www.youtube.com/watch?v=pF7p9hruSeY",
+        color:""
     },
     {
         id: 8,
@@ -93,7 +100,8 @@ const data = [
         vignette:"",
         pegi: 7,
         genre: "Adventure",
-        video:"https://www.youtube.com/watch?v=OAZB2VinTbI"
+        video:"https://www.youtube.com/watch?v=OAZB2VinTbI",
+        color:""
     }
 ]
 
