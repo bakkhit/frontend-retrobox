@@ -3,8 +3,8 @@ import Header from "../components/header";
 import Footer from "../components/footer";
 import data from "../pages/api/games";
 import GameShow from "../components/gameShow";
-import LastGameShow from "../components/recentLeft";
-import RecentRight from "../components/recentRight";
+import LatestLeft from "../components/latestLeft";
+import LatestRight from "../components/latestRight";
 
 const games = data;
 
@@ -42,7 +42,7 @@ export default function Home() {
           </div>
 
           <h1 className="font-[silkscreen] text-white text-center text-5xl mt-20">MAINTENANT DISPONIBLE</h1>
-          <LastGameShow data={games} />
+          <LatestLeft data={games} />
           <RecentRight data={games} />
 
           <div className="mb-[5%]">
