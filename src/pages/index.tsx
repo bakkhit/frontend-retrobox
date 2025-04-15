@@ -3,6 +3,8 @@ import Header from "../components/header";
 import Footer from "../components/footer";
 import data from "../pages/api/games";
 import GameShow from "../components/gameShow";
+import LastGameShow from "../components/recentLeft";
+import RecentRight from "../components/recentRight";
 
 const games = data;
 
@@ -38,18 +40,11 @@ export default function Home() {
             <div className="w-[332px] h-[572px] bg-blue-700 rounded-[20px]"></div>
             <div className="w-[332px] h-[572px] bg-blue-700 rounded-[20px]"></div>
           </div>
-          <h2 className="text-5xl text-white font-thin mt-[15%] mb-[5%] justify-self-center">Maintenant Disponible</h2>
-          <div className="w-[1376px] h-[580px] bg-zinc-400 justify-self-center mb-[5%]"></div>
-          <div className="mb-[5%]">
-            <h3 className="text-4xl text-white ml-[20%]">Jeux Vidéo</h3><br /><br />
-            <div className="w-[30%] ml-[20%]">
-              <p className="text-md text-white">
-                lorem ipsum dolor sit amet. Non velit voluptas ut perspiciatis nemo sit animi voluptatem et repellat minusnam voluptatem nisi! Ut distinctio perspiciatis est cupiditate vero aut explicabo omnis ut sunt quia et quis alias ut incidunt perferendis
-              </p><br />
-              <button className="border border-white text-white px-5 py-1 rounded-full mr-[5%]">Plus d'info</button>
-              <button className="border border-white text-white px-5 py-1 rounded-full">Acheter</button>
-            </div>
-          </div>
+
+          <h1 className="font-[silkscreen] text-white text-center text-5xl mt-20">MAINTENANT DISPONIBLE</h1>
+          <LastGameShow data={games} />
+          <RecentRight data={games} />
+
           <div className="mb-[5%]">
             <h3 className="justify-self-center text-white text-5xl font-thin">Boutique</h3><br />
             <div className="flex justify-end mr-[12%]">

@@ -21,7 +21,7 @@ const GameShow = ({ data }: Props) => {
 
     return (
         <section
-            className="relative w-[100vw] h-[50vw] bg-cover bg-no-repeat bg-center p-10 transition-all duration-500 bg-black"
+            className="relative w-full h-[58vw] bg-cover bg-no-repeat bg-center p-10 transition-all duration-500 bg-black"
             style={{ backgroundImage: `url(${selectedGame.img})` }}
         >
             <div className="text-white w-[25%] mt-[13vw] ml-[13vw] text-[1vw] z-10">

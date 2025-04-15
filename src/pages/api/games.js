@@ -8,7 +8,8 @@ const data = [
         img: "/images/gamesImg/superMarioBros.png",
         vignette:"/images/gamesImg/vignetteMario.png",
         pegi: 3,
-        genre: "Platformer"
+        genre: "Platformer",
+        video:""
     },
     {
         id: 2,
@@ -19,7 +20,8 @@ const data = [
         img: "/images/gamesImg/donkeyKong.png",
         vignette:"/images/gamesImg/vignetteDonkeyKong.png",
         pegi: 3,
-        genre: "Platformer"
+        genre: "Platformer",
+        video:""
     },
     {
         id: 3,
@@ -30,7 +32,8 @@ const data = [
         img: "/images/gamesImg/crashBandicoot.png",
         vignette:"/images/gamesImg/vignetteCrashBandicoot.png",
         pegi: 7,
-        genre: "Platformer"
+        genre: "Platformer",
+        video:""
     },
     {
         id: 4,
@@ -41,7 +44,8 @@ const data = [
         img: "/images/gamesImg/fifa.png",
         vignette:"/images/gamesImg/vignetteFifa.png",
         pegi: 3,
-        genre: "Sports"
+        genre: "Sports",
+        video:""
     },
     {
         id: 5,
@@ -52,7 +56,8 @@ const data = [
         img: "/images/gamesImg/cod.png",
         vignette:"/images/gamesImg/vignetteCod.png",
         pegi: 18,
-        genre: "Shooter"
+        genre: "Shooter",
+        video:""
     },
     {
         id: 6,    
@@ -63,7 +68,32 @@ const data = [
         img: "/images/gamesImg/sonic.png",
         vignette:"/images/gamesImg/vignetteSonic.png",
         pegi: 3,
-        genre: "Platformer"
+        genre: "Platformer",
+        video:""
+    },
+    {
+        id: 7,
+        name: "The Legend of Zelda Ocarina of Time",
+        description: "Le jeu The Legend of Zelda est un jeu d'action-aventure où le joueur incarne continuellement un personnage prénommé Link. Il s'agit d'un jeune garçon, parfois d'un jeune homme, qui par la force des choses se retrouve embarqué dans diverses aventures.",
+        price: 69.99,
+        console: "Nintendo 64",
+        img: "/images/gamesImg/zeldaOt.png",
+        vignette:"",
+        pegi: 12,
+        genre: "Action-Adventure",
+        video:"https://www.youtube.com/watch?v=pF7p9hruSeY"
+    },
+    {
+        id: 8,
+        name:"Jumanji",
+        description: "Un jeu pour revivre les aventures et les embûches en tout genre du film de 1995. Idéal pour les parents nostalgiques et jouable en famille ou entre adultes. Un seul objectif : traverser la jungle sain et sauf et atteindre en premier le centre du plateau.",
+        price: 29.99,
+        console: "Playstation",
+        img: "/images/gamesImg/jumanji.png",
+        vignette:"",
+        pegi: 7,
+        genre: "Adventure",
+        video:"https://www.youtube.com/watch?v=OAZB2VinTbI"
     }
 ]
 
