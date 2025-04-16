@@ -29,3 +29,12 @@ body {
     0 0 30px #4642ED,
     0 0 35px #4642ED;
 }
+
+.neon-text2 {
+  font-family: "Silkscreen", sans-serif;
+  color: #45E5C5;
+  text-shadow:
+    0 0 25px #45E5C5,
+    0 0 30px #45E5C5,
+    0 0 35px #45E5C5;
+}
