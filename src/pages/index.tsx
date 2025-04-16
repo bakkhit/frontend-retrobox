@@ -1,6 +1,5 @@
 import { Boutique } from "@/components/boutique/blocks/boutique";
 import { Cards } from "@/components/card/Cards";
-import { Header } from "@/components/header/Header";
 import Image from "next/image";
 import Header from "../components/header";
 import Footer from "../components/footer";
