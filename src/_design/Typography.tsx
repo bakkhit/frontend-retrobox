@@ -4,11 +4,13 @@ import clsx from "clsx";
 
 interface TypographieProps {
   children: React.ReactNode;
-  variant: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+  variant: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "a";
   fontFamily: "Inter";
   isBold?: Bool;
+  isMedium?: Bool;
   color: "white" | "black" | "neon";
   className?: String;
+  href?: String;
 }
 
 export const Typographie = ({
@@ -17,7 +19,9 @@ export const Typographie = ({
   color,
   fontFamily,
   isBold = false,
+  isMedium = false,
   className,
+  href,
 }: TypographieProps) => {
   let variantSwitcher: string = "";
   let fontFamilySwitcher: string = "";
@@ -42,13 +46,16 @@ export const Typographie = ({
     case "h6":
       variantSwitcher = "text-h6 leading-h6";
       break;
+    case "a":
+      variantSwitcher = "flex text-h6 leading-h6";
+      break;
   }
 
   switch (fontFamily) {
     case "Inter":
-      isBold
-        ? (fontFamilySwitcher = "font-inter font-bold")
-        : (fontFamilySwitcher = "font-inter font-normal");
+      isBold && (fontFamilySwitcher = "font-inter font-bold");
+      !isBold && (fontFamilySwitcher = "font-inter font-light");
+      isMedium && (fontFamilySwitcher = "font-inter font-normal");
       break;
   }
 
@@ -66,6 +73,7 @@ export const Typographie = ({
 
   return (
     <Variant
+      href={href ?? undefined}
       className={clsx(
         variantSwitcher,
         fontFamilySwitcher,
