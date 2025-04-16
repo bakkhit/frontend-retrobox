@@ -18,7 +18,7 @@ const LogIn = () => {
         <SignUp onClick={handleToggle} />
       )}
     </Container>
-  );
+      );
 };
 
 export default LogIn;

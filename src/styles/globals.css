@@ -1,11 +1,21 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 @import "tailwindcss";
 
+
+@font-face {
+  font-family: "silkscreen";
+  src: url("../../public/slkscr.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 :root {
   --background: #050d1d;
   --foreground: #ffffff;
 
   --primary: #4642ed;
+  
+  --font-skills: "silkscreen";
 
   --h1: 64px;
   --h2: 40px;
@@ -20,6 +30,7 @@
   --color-foreground: var(--foreground);
 
   --font-inter: "Inter", system-ui;
+  --font-skills: var(--font-skills);
 
   --color-primary: var(--primary);
 
@@ -57,4 +68,13 @@ input::placeholder {
 body {
   background: var(--background);
   margin: 0;
+}
+
+.neon-text {
+  font-family: "Silkscreen", sans-serif;
+  color: #4642ED;
+  text-shadow:
+    0 0 25px #4642ED,
+    0 0 30px #4642ED,
+    0 0 35px #4642ED;
 }

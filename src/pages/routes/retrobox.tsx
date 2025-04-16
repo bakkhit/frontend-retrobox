@@ -21,7 +21,7 @@ const retrobox = () => {
                     </div>
                     <div className='flex items-center'>
                         <a href='/page/LogIn' className='px-4 py-1 rounded-full border border-black text-center w-[70%]'>Connexion</a>
-                        <a href="#"><Image src="/images/bCart.png" alt="Cart" layout="responsive" width={100} height={100} /></a>
+                        <a href="/page/cart"><Image src="/images/bCart.png" alt="Cart" layout="responsive" width={100} height={100} /></a>
                         <a href="#"><Image src="/images/bSearch.png" alt="Search" layout="responsive" width={100} height={100} /></a>
                     </div>
                 </div>
