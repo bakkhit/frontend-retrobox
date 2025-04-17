@@ -58,14 +58,14 @@ export const Filter = () => {
     toggleFn: (val: string) => void
   ) => (
     <div className="flex flex-col gap-6 items-start w-max justify-center text-white">
-      <Typographie variant="h3" fontFamily="Inter" color="white" isBold>
+      <Typographie variant="h4" fontFamily="Inter" color="white" isBold>
         {title}
       </Typographie>
-      <div className="flex flex-col gap-2">
+      <div className="flex items-start justify-start flex-col gap-2">
         {items.map((item) => (
           <label
             key={item.name}
-            className="flex items-center gap-1 cursor-pointer"
+            className="flex items-center gap-3 cursor-pointer"
           >
             <input
               type="checkbox"

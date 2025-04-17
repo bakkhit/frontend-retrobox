@@ -23,7 +23,9 @@ export const Header = () => {
     <Container paddingX={270} paddingY={100}>
       <section className="flex flex-col md:flex-row justify-center items-center md:justify-between h-fit">
         <div className="flex flex-col items-start justify- gap-8 w-full h-max">
-          <h1 className="text-blue-700 text-5xl font-bold">{data?.title}</h1>
+          <Typographie variant="h2" fontFamily="silkscreen" color="neon" isBold>
+            {data?.title}
+          </Typographie>
           <div className="flex flex-col items-start justify-start gap-4 max-w-[465px] w-full">
             {data?.subtitle.map((subtitle) => (
               <Typographie variant="h5" color="white" fontFamily="Inter">
@@ -35,14 +37,13 @@ export const Header = () => {
             {data?.button}
           </CTA>
         </div>
-        <div className="w-full md:w-auto">
-          <Image
-            src="/images/consoleImage1.png"
-            alt="Image Console"
-            width={900}
-            height={300}
-          />
-        </div>
+        <Image
+          src="/images/Box-mockups.png"
+          alt="Image Console"
+          className="absolute top-0 right-0"
+          width={900}
+          height={300}
+        />
       </section>
     </Container>
   );

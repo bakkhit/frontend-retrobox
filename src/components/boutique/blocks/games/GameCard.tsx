@@ -6,6 +6,12 @@ import Image from "next/image";
 interface GameCardProps {
   title: String;
   description: String;
+  gender: {
+    name: String;
+  }[];
+  pegi: {
+    name: String;
+  }[];
   price: Number;
   images: {
     src: String;
@@ -15,11 +21,13 @@ interface GameCardProps {
 export const GameCard = ({
   title,
   description,
+  gender,
+  pegi,
   price,
   images,
 }: GameCardProps) => {
   return (
-    <div className="flex flex-col items-start w-max justify-center text-white">
+    <div className="flex flex-col gap-2.5 items-start w-max justify-center text-white">
       <Image
         src={images[0].src}
         alt={`image ${title}`}

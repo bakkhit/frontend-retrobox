@@ -5,7 +5,7 @@ import clsx from "clsx";
 interface TypographieProps {
   children: React.ReactNode;
   variant: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "a";
-  fontFamily: "Inter";
+  fontFamily: "Inter" | "silkscreen";
   isBold?: Bool;
   isMedium?: Bool;
   color: "white" | "black" | "neon";
@@ -56,6 +56,9 @@ export const Typographie = ({
       isBold && (fontFamilySwitcher = "font-inter font-bold");
       !isBold && (fontFamilySwitcher = "font-inter font-light");
       isMedium && (fontFamilySwitcher = "font-inter font-normal");
+      break;
+    case "silkscreen":
+      fontFamilySwitcher = "font-silkscreen";
       break;
   }
 

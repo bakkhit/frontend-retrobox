@@ -1,5 +1,6 @@
 import { Boutique } from "@/components/boutique/blocks/boutique";
 import { Cards } from "@/components/card/Cards";
+import GameShow from "@/components/gameShow";
 import { Header } from "@/components/header/Header";
 import Image from "next/image";
 
@@ -17,6 +18,23 @@ export default function Home() {
       />
 
       <Cards />
+
+      <GameShow
+        data={[
+          {
+            id: 1,
+            name: "test",
+            description: "test",
+            price: 12,
+            console: "console1",
+            img: "/images/jumanji.png",
+            vignette: "/images/jumanji.png",
+            pegi: 12,
+            genre: "genre",
+            color: "couleur",
+          },
+        ]}
+      />
 
       <section>
         <div className="h-fit grid bg-slate-950">

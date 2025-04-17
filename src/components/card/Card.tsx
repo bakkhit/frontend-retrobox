@@ -1,16 +1,21 @@
 import { Typographie } from "@/_design/Typography";
+import { Number } from "@/_types/num_type";
 import { String } from "@/_types/string_type";
 import Image from "next/image";
 
 interface CardProps {
+  key: Number;
   img: String;
   title: String;
   subtitle: String;
 }
 
-export const Card = ({ img, title, subtitle }: CardProps) => {
+export const Card = ({ img, title, subtitle, key }: CardProps) => {
   return (
-    <div className="relative flex flex-col items-center justify-center rounded-[20px] gap-6 h-max bg-[#4642ED] p-5">
+    <div
+      key={key}
+      className="relative flex flex-col items-center justify-center rounded-[20px] gap-6 h-max bg-[#4642ED] p-5"
+    >
       <div className="flex items-center justify-center relative max-w-[290px] w-full h-80 bg-[#0A1834] rounded-2xl px-3.5">
         <Image src={img} alt="img" width={290} height={370} />
       </div>
