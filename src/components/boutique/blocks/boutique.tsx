@@ -27,12 +27,20 @@ export const Boutique = () => {
   const [gamesData, setGamesData] = useState<Game[]>([]);
 
   useEffect(() => {
-    fetchFilterData({ src: "games" }).then((data) => setGamesData(data));
+    fetchFilterData({ src: "games" }).then((data) => {
+      setGamesData(data);
+      localStorage.setItem("games", JSON.stringify(data));
+    });
   }, []);
 
   useEffect(() => {
     console.log(gamesData);
   }, [gamesData]);
+
+  const cartItemSet = (game: Game) => {
+    const cartItems = localStorage.setItem("cart", JSON.stringify(game));
+    console.log(cartItems);
+  };
 
   const filteredGames = gamesData.filter((game) => {
     const matchPEGI =
@@ -59,15 +67,20 @@ export const Boutique = () => {
         <Filter />
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 w-full h-max">
           {filteredGames.map((game, index) => (
-            <GameCard
+            <div
               key={index}
-              images={game.images}
-              title={game.name}
-              description={game.description}
-              gender={game.gender}
-              pegi={game.pegi}
-              price={game.price}
-            />
+              onClick={() => cartItemSet(game)}
+              className="cursor-pointer hover:opacity-75 transition-opacity duration-300"
+            >
+              <GameCard
+                images={game.images}
+                title={game.name}
+                description={game.description}
+                gender={game.gender}
+                pegi={game.pegi}
+                price={game.price}
+              />
+            </div>
           ))}
         </div>
       </div>

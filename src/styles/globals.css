@@ -62,6 +62,12 @@ input::placeholder {
   color: white;
 }
 
+.neon {
+  text-shadow: 0 0 1px #4642ed, 0 0 1px #4642ed, 0 0 1px #4642ed,
+    0 0 20px #4642ed, 0 0 1px #4642ed, 0 0 0px #4642ed, 0 0 100px #4642ed,
+    0 0 5px #4642ed;
+}
+
 .topBar {
   backdrop-filter: blur(2px);
   border-bottom: 1px solid rgba(94, 87, 166, 0.42);

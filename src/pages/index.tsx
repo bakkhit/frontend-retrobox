@@ -2,36 +2,52 @@ import { Boutique } from "@/components/boutique/blocks/boutique";
 import { Cards } from "@/components/card/Cards";
 import GameShow from "@/components/gameShow";
 import { Header } from "@/components/header/Header";
+import LatestLeft from "@/components/latestLeft";
+import { fetchGamesData } from "@/utils/games-data-fetch";
 import Image from "next/image";
 
 export default function Home() {
+  const games = fetchGamesData();
+
   return (
     <div className="flex flex-col gap-32 overflow-x-hidden h-fit">
       <Header />
 
-      <Image
+      {/* <Image
         src="/images/mario.png"
         alt="Mario"
         layout="responsive"
         width={100}
         height={100}
+      /> */}
+
+      <GameShow
+        data={games.map((game) => ({
+          id: game.id,
+          name: game.name,
+          description: game.description,
+          price: game.price,
+          img: game.images[0]?.src || "/default-image.jpg", // Image par défaut si src est manquant
+          vignette: game.images[0]?.src || "/default-vignette.jpg", // Image par défaut pour la vignette
+        }))}
       />
 
       <Cards />
 
-      <GameShow
+      <LatestLeft
         data={[
           {
             id: 1,
-            name: "test",
-            description: "test",
-            price: 12,
-            console: "console1",
+            name: "example game",
+            description: "example description",
+            price: 20,
+            console: "example console",
             img: "/images/jumanji.png",
             vignette: "/images/jumanji.png",
             pegi: 12,
-            genre: "genre",
-            color: "couleur",
+            genre: "example genre",
+            video:
+              "https://www.youtube.com/embed/VbmKRdinlus?si=V1MvQgvhTJkCiTmE",
           },
         ]}
       />

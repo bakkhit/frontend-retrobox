@@ -21,8 +21,8 @@ export const Header = () => {
   });
   return (
     <Container paddingX={270} paddingY={100}>
-      <section className="flex flex-col md:flex-row justify-center items-center md:justify-between h-fit">
-        <div className="flex flex-col items-start justify- gap-8 w-full h-max">
+      <section className="flex flex-col lg:flex-row justify-center items-center md:justify-between h-fit">
+        <div className="flex flex-col items-start justify- gap-8 w-max h-max">
           <Typographie variant="h2" fontFamily="silkscreen" color="neon" isBold>
             {data?.title}
           </Typographie>
@@ -37,13 +37,20 @@ export const Header = () => {
             {data?.button}
           </CTA>
         </div>
-        <Image
-          src="/images/Box-mockups.png"
-          alt="Image Console"
-          className="absolute top-0 right-0"
-          width={900}
-          height={300}
-        />
+        <div
+          className="relative lg:-right-68"
+          style={{
+            width: "clamp(300px, 72.917vw, 1400px)",
+            height: "clamp(300px, 26.042vw, 500px)",
+          }}
+        >
+          <Image
+            src="/images/Box-mockups.png"
+            alt="Image Console"
+            className="relative lg:absolute top-0 object-cover"
+            fill
+          />
+        </div>
       </section>
     </Container>
   );

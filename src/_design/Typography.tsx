@@ -70,7 +70,7 @@ export const Typographie = ({
       colorSwitcher = "text-black";
       break;
     case "neon":
-      colorSwitcher = "text-primary";
+      colorSwitcher = "neon text-primary";
       break;
   }
 

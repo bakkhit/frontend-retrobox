@@ -10,7 +10,9 @@ const BACK_VERSION = process.env.NEXT_PUBLIC_BACKEND_VERSION;
 type Consoles_Data = {
   name?: String;
   description?: String;
-  images?: string;
+  images?: {
+    src: string;
+  }[];
   price?: Number;
   stars?: Number;
 };
@@ -35,11 +37,11 @@ export const Cards = () => {
       <Typographie variant="h1" color="white" fontFamily="silkscreen">
         Console
       </Typographie>
-      <div className="flex items-center justify-center gap-4">
+      <div className="flex items-start justify-center gap-4">
         {consoles.map((console, index) => (
           <Card
             key={index}
-            img={console.images ?? ""}
+            img={console.images?.[0].src ?? ""}
             title={console.name ?? "Error"}
             subtitle={console.description ?? "Error"}
           />
