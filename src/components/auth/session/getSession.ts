@@ -1,5 +1,3 @@
-import { useSessionStore } from "@/context/Session.user";
-
 const BACK_URL = process.env.NEXT_PUBLIC_BACKEND_WEBSITE_URL;
 
 export const getSession = async () => {

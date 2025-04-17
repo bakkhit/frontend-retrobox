@@ -52,14 +52,16 @@ export const Navigation_Bar = ({ path = "/" }: Props) => {
         >
           {token ? "Se déconnecter" : "Connexion"}
         </CTA>
-        <Image
-          className="hover:opacity-75"
-          src="/images/cart.svg"
-          onClick={() => router.push(`/routes/cart`)}
-          alt="cart icon"
-          width={24}
-          height={24}
-        />
+        {token && (
+          <Image
+            className="hover:opacity-75"
+            src="/images/cart.svg"
+            onClick={() => router.push(`/routes/cart`)}
+            alt="cart icon"
+            width={24}
+            height={24}
+          />
+        )}
       </div>
     </section>
   );
