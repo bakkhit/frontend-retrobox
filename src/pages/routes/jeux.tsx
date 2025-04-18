@@ -46,7 +46,7 @@ const Jeux = () => {
   };
 
   return (
-    <div className="w-full h-screen bg-neutral-300 relative flex flex-col items-center justify-center">
+    <div className="w-full h-screen relative flex flex-col items-center justify-center">
       <h1 className="text-3xl font-bold mb-8">Console Memory Game</h1>
       <div className="grid grid-cols-4 gap-4 p-4">
         {cards.map((console, index) => (

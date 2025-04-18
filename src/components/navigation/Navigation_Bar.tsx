@@ -54,7 +54,7 @@ export const Navigation_Bar = ({ path = "/" }: Props) => {
         </CTA>
         {token && (
           <Image
-            className="hover:opacity-75"
+            className="hover:opacity-75 cursor-pointer"
             src="/images/cart.svg"
             onClick={() => router.push(`/routes/cart`)}
             alt="cart icon"

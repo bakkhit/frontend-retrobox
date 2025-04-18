@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 
 export default function App({ Component, pageProps }: AppProps) {
-  const { setToken } = useSessionStore();
+  const { setToken, setUser } = useSessionStore();
   const pathname = usePathname();
 
   useEffect(() => {
@@ -16,6 +16,11 @@ export default function App({ Component, pageProps }: AppProps) {
 
       if (userData) {
         setToken(userData.session.token);
+        setUser({
+          id: userData.user.id,
+          name: userData.user.name,
+          email: userData.user.email,
+        });
       }
     };
 
