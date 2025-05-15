@@ -23,7 +23,7 @@ const LatestLeft = ({ data }: Props) => {
   const lastGame = useMemo(() => data[data.length - 1], [data]);
 
   return (
-    <section className="relative w-full flex flex-col items-center">
+    <section className="relative w-full h-max flex flex-col items-center overflow-x-hidden">
       <Typographie
         variant="h1"
         fontFamily="silkscreen"
@@ -34,7 +34,7 @@ const LatestLeft = ({ data }: Props) => {
       </Typographie>
       {/* Conteneur image */}
       <div
-        className="relative w-[70vw] h-[30vw] bg-center bg-cover rounded-xl shadow-xl"
+        className="relative w-full max-w-[70vw] h-[30vw] bg-center bg-cover rounded-xl shadow-xl"
         style={{ backgroundImage: `url(${lastGame.img})` }}
       >
         {/* Vidéo dépassant en bas à droite */}
@@ -51,7 +51,7 @@ const LatestLeft = ({ data }: Props) => {
       </div>
 
       {/* Texte et boutons en dessous et à gauche */}
-      <div className="relative flex flex-col left-70 top-10 items-start justify-start text-white w-full">
+      <div className="relative flex flex-col left-70 pt-10 items-start justify-start text-white w-full">
         <Typographie
           variant="h3"
           color="white"

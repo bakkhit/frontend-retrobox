@@ -20,10 +20,19 @@ export const Header = () => {
     setData(Header_Data);
   });
   return (
-    <Container paddingX={270} paddingY={100}>
+    <Container paddingX={270} paddingY={100} className="overflow-x-hidden">
       <section className="flex flex-col lg:flex-row justify-center items-center md:justify-between h-fit">
-        <div className="flex flex-col items-start justify- gap-8 w-max h-max">
+        <div className="flex flex-col items-start justify- gap-8 z-10 w-max h-max">
           <Typographie variant="h2" fontFamily="silkscreen" color="neon" isBold>
+            Et si on retournait dans le passé ?
+          </Typographie>
+          <Typographie
+            variant="h3"
+            fontFamily="silkscreen"
+            color="white"
+            isWhiteNeon
+            isBold
+          >
             {data?.title}
           </Typographie>
           <div className="flex flex-col items-start justify-start gap-4 max-w-[465px] w-full">
@@ -38,10 +47,10 @@ export const Header = () => {
           </CTA>
         </div>
         <div
-          className="relative lg:-right-68"
+          className="xl:block hidden absolute xl:right-14 z-0"
           style={{
-            width: "clamp(300px, 72.917vw, 1400px)",
-            height: "clamp(300px, 26.042vw, 500px)",
+            width: "clamp(214px, 47.604vw, 914px)",
+            height: "clamp(114px, 31.979vw, 614px)",
           }}
         >
           <Image

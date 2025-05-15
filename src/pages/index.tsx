@@ -1,8 +1,10 @@
+import { Typographie } from "@/_design/Typography";
 import { Boutique } from "@/components/boutique/blocks/boutique";
 import { Cards } from "@/components/card/Cards";
 import GameShow from "@/components/gameShow";
 import { Header } from "@/components/header/Header";
 import LatestLeft from "@/components/latestLeft";
+import { HowItWorks } from "@/components/sections/howItWorks";
 import { fetchGamesData } from "@/utils/games-data-fetch";
 import Image from "next/image";
 
@@ -10,27 +12,8 @@ export default function Home() {
   const games = fetchGamesData();
 
   return (
-    <div className="flex flex-col gap-32 overflow-x-hidden h-fit">
+    <div className="flex flex-col gap-32 h-fit">
       <Header />
-
-      {/* <Image
-        src="/images/mario.png"
-        alt="Mario"
-        layout="responsive"
-        width={100}
-        height={100}
-      /> */}
-
-      <GameShow
-        data={games.map((game) => ({
-          id: game.id,
-          name: game.name,
-          description: game.description,
-          price: game.price,
-          img: game.images[0]?.src || "/default-image.jpg", // Image par défaut si src est manquant
-          vignette: game.images[0]?.src || "/default-vignette.jpg", // Image par défaut pour la vignette
-        }))}
-      />
 
       <Cards />
 
@@ -51,6 +34,16 @@ export default function Home() {
           },
         ]}
       />
+
+      <Typographie
+        variant="h1"
+        fontFamily="silkscreen"
+        color="white"
+        className="text-center"
+      >
+        Comment ça fonctionne ?
+      </Typographie>
+      <HowItWorks />
 
       <section>
         <div className="h-fit grid bg-slate-950">

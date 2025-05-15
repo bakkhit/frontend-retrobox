@@ -20,7 +20,7 @@ export const Navigation_Bar = ({ path = "/" }: Props) => {
   };
 
   return (
-    <section className="topBar sticky top-0 w-full h-20 z-10 flex gap-10 lg:gap-[180px] justify-between items-center px-4">
+    <section className="topBar sticky top-0 w-full h-20 z-20 flex gap-10 lg:gap-[180px] justify-between items-center px-4">
       <Image
         src="/images/logo/logo-retro-box.png"
         alt="Logo Retro Box"

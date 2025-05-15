@@ -8,6 +8,7 @@ interface TypographieProps {
   fontFamily: "Inter" | "silkscreen";
   isBold?: Bool;
   isMedium?: Bool;
+  isWhiteNeon?: Bool;
   color: "white" | "black" | "neon";
   className?: String;
   href?: String;
@@ -20,11 +21,13 @@ export const Typographie = ({
   fontFamily,
   isBold = false,
   isMedium = false,
+  isWhiteNeon = false,
   className,
   href,
 }: TypographieProps) => {
   let variantSwitcher: string = "";
   let fontFamilySwitcher: string = "";
+  let isNeonTextStyle: string = "";
   let colorSwitcher: string = "";
 
   switch (Variant) {
@@ -49,6 +52,11 @@ export const Typographie = ({
     case "a":
       variantSwitcher = "flex text-h6 leading-h6";
       break;
+  }
+
+  switch (isWhiteNeon) {
+    case true:
+      isNeonTextStyle = "whiteNeon";
   }
 
   switch (fontFamily) {
@@ -80,6 +88,7 @@ export const Typographie = ({
       className={clsx(
         variantSwitcher,
         fontFamilySwitcher,
+        isNeonTextStyle,
         colorSwitcher,
         className
       )}

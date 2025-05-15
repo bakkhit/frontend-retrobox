@@ -33,7 +33,7 @@ export const Cards = () => {
     fetch_consoles();
   }, []);
   return (
-    <section className="w-full h-max flex flex-col gap-22 items-center justify-center">
+    <section className="w-full h-max flex flex-col gap-22 items-center justify-center overflow-x-hidden">
       <Typographie variant="h1" color="white" fontFamily="silkscreen">
         Console
       </Typographie>
