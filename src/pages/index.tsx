@@ -4,6 +4,7 @@ import { Cards } from "@/components/card/Cards";
 import GameShow from "@/components/gameShow";
 import { Header } from "@/components/header/Header";
 import LatestLeft from "@/components/latestLeft";
+import { Ellipse } from "@/components/pattern/ellipse";
 import GamesShower from "@/components/sections/gamesShower";
 import { HowItWorks } from "@/components/sections/howItWorks";
 import { NosSouvenirs } from "@/components/sections/memory";
@@ -14,6 +15,16 @@ export default function Home() {
 
   return (
     <div className="flex flex-col gap-32 h-fit">
+
+      <Ellipse top={60} left={-10} backgroundColor="#4845E5" width={20} blur={150} className=""/>
+      <Ellipse top={90} left={85} backgroundColor="#45E5C5" width={30} blur={200} className=""/>
+      <Ellipse top={120} left={85} backgroundColor="#45E5C5" width={30} blur={200} className=""/>
+      <Ellipse top={130} left={60} backgroundColor="#4845E5" width={30} blur={250} className=""/>
+      <Ellipse top={140} left={45} backgroundColor="#45E5C5" width={30} blur={250} className=""/>
+      <Ellipse top={320} left={-50} backgroundColor="#45E5C5" width={70} blur={250} className=""/>
+      <Ellipse top={360} left={80} backgroundColor="#4845E5" width={30} blur={250} className=""/>
+      <Ellipse top={400} left={-50} backgroundColor="#4845E5" width={70} blur={250} className=""/>
+      <Ellipse top={400} left={80} backgroundColor="#45E5C5" width={40} blur={250} className=""/>
       <NosSouvenirs />
       <Header />
 
@@ -55,16 +66,7 @@ export default function Home() {
         Nos jeux disponible
       </Typographie>
 
-      <GameShow
-        data={games.map((game) => ({
-          id: game.id,
-          name: game.name,
-          description: game.description,
-          price: game.price,
-          img: game.images[0]?.src || "/default-image.jpg", // Image par défaut si src est manquant
-          vignette: game.images[0]?.src || "/default-vignette.jpg", // Image par défaut pour la vignette
-        }))}
-      />
+      <GameShow/>
 
       <GamesShower />
 

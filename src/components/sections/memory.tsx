@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export const NosSouvenirs = () => {
   return (
-    <section className="relative w-full h-fit bg-[#18181b] -translate-y-19">
+    <section className="relative w-full h-fit -translate-y-19">
       <div className="relative w-full h-[100vh]">
         <Image
           src={"/svg/nosSouvenir.svg"}
@@ -12,7 +12,7 @@ export const NosSouvenirs = () => {
           className="object-cover object-top"
           priority
         />
-        <div className="absolute top-[10vh] right-[10vw] h-fit w-[30vw] p-[3vw] bg-gray-800 bg-opacity-90 rounded-xl z-10">
+        <div className="absolute top-[10vh] right-[10vw] h-fit w-[30vw] p-[3vw] rounded-xl z-10">
           <Typographie
             variant="h5"
             fontFamily="Inter"
@@ -32,7 +32,7 @@ export const NosSouvenirs = () => {
             NOS SOUVENIR
           </Typographie>
         </div>
-        <div className="absolute bottom-0 left-0 w-full h-64 pointer-events-none bg-gradient-to-b from-transparent to-[#18181b] z-5" />
+        <div className="absolute bottom-0 left-0 w-full h-64 pointer-events-none z-5" />
         <Image
           src="/images/gamesIcon.png"
           alt="gamesIcon"
@@ -42,7 +42,7 @@ export const NosSouvenirs = () => {
         />
       </div>
       {/* Contenu du bas, collé à l'image */}
-      <div className="w-full flex flex-col gap-8 pb-16 bg-[#050D1D]">
+      <div className="w-full flex flex-col gap-8 pb-16">
         <div className="w-[30vw] bg-gray-800 bg-opacity-90 rounded-xl p-[1.5vw] text-end ml-[15vw] z-10">
           <Typographie
             variant="h5"

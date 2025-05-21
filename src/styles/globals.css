@@ -9,7 +9,7 @@
 }
 
 :root {
-  --background: #050d1d;
+  --background: #050D1D;
   --foreground: #ffffff;
 
   --primary: #4642ed;
@@ -125,4 +125,5 @@ input::placeholder {
 body {
   background: var(--background);
   margin: 0;
+  z-index: -1;
 }
