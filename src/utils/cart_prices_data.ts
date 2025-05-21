@@ -1,7 +1,7 @@
 export const CartPricesData = [
   {
-    name: "Retrobox",
-    price: 225,
+    name: "Abonnement",
+    price: 0,
   },
   {
     name: "Frais de livraison",

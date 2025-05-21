@@ -1,36 +1,283 @@
-import React from 'react';
-import Image from "next/image";
+import { Typographie } from "@/_design/Typography";
+import { Boutique } from "@/components/boutique/blocks/boutique";
+import { fetch_consoles } from "@/components/boutique/logique/fetch/console";
+import { Card } from "@/components/card/Card";
+import { Container } from "@/components/container/Container";
+import TimeSlide from "@/components/sections/timeSlide";
+import { useConsoleStore } from "@/context/Consoles.data";
+import { gameboyPack } from "@/utils/gameboy_pack";
+import clsx from "clsx";
+import { useEffect, useState } from "react";
+
+type ConsoleType = {
+  id: number;
+  name?: string;
+  price?: number;
+  description?: string;
+  images?: { src: string }[];
+  [key: string]: any;
+};
 
 const retrobox = () => {
-    return (
-        <div className='w-[100vw] h-[100vh] bg-neutral-300 relative flex flex-col items-center justify-center'>
-            <header className='flex items-center p-4 z-20 w-full absolute top-0'>
-                <div className='flex flex-col'>
-                    <a href="/">
-                        <p>Retro</p>
-                        <p>Box</p>
-                    </a>
-                </div>
-                <div className='flex w-[90%] ml-[5%] pt-2 pb-2 pl-10 pr-10 rounded-full bg-neutral-100 bg-opacity-50 justify-between'>
-                    <div className='flex w-[60%] gap-[10%]'>
-                        <a href='../page/retrobox' className='border bg-black text-white px-4 py-1 rounded-full w-[70%] text-center'>Retrobox</a>
-                        <a href='../page/jeux' className='border border-black px-4 py-1 rounded-full w-[70%] text-center'>Jeux</a>
-                        <a href='../page/console' className='border border-black px-4 py-1 rounded-full w-[70%] text-center'>Console</a>
-                        <a href='../page/actualite' className='border border-black px-4 py-1 rounded-full w-[70%] text-center'>Actualité</a>
-                        <a href='../page/shop' className='border border-black px-4 py-1 rounded-full w-[70%] text-center'>Boutique</a>
-                    </div>
-                    <div className='flex items-center'>
-                        <a href='/page/LogIn' className='px-4 py-1 rounded-full border border-black text-center w-[70%]'>Connexion</a>
-                        <a href="#"><Image src="/images/bCart.png" alt="Cart" layout="responsive" width={100} height={100} /></a>
-                        <a href="#"><Image src="/images/bSearch.png" alt="Search" layout="responsive" width={100} height={100} /></a>
-                    </div>
-                </div>
-            </header>
-            <section className=''>
-                <h1 className='mb-[10%] text-5xl'>Abonnement</h1>
-            </section>
+  const { setConsole, fetchedConsoles } = useConsoleStore();
+  const [selectedConsoles, setSelectedConsoles] = useState<ConsoleType[]>([]);
+  const [packisSelected, setPackIsSelected] = useState(false);
+  const [cartPackIds, setCartPackIds] = useState<number[]>([]);
+
+  const toggleConsole = (console: any) => {
+    const isSelected = selectedConsoles.find((c) => c.id === console.id);
+
+    if (isSelected) {
+      // Remove from selection
+      setSelectedConsoles((prev) => prev.filter((c) => c.id !== console.id));
+    } else {
+      // Add to selection
+      setSelectedConsoles((prev) => [...prev, console]);
+    }
+  };
+
+  const saveToLocalStorage = () => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem("cart", JSON.stringify(selectedConsoles));
+    }
+    console.log("Consoles ajoutées au panier :", selectedConsoles);
+  };
+
+  const handleAddPackToCart = (pack: any) => {
+    try {
+      const existingCart = localStorage.getItem("cart");
+      const cart: ConsoleType[] = existingCart ? JSON.parse(existingCart) : [];
+
+      // Vérifie si ce pack est déjà dans le panier
+      const isAlreadyInCart = cart.some((item) => item.id === pack.id);
+      if (isAlreadyInCart) return;
+
+      const formattedPack: ConsoleType = {
+        id: pack.id,
+        name: pack.name,
+        description: "", // si tu n'en as pas, tu peux laisser vide
+        price: pack.price,
+        images: [{ src: pack.src }],
+      };
+
+      const newCart = [...cart, formattedPack];
+      localStorage.setItem("cart", JSON.stringify(newCart));
+      console.log("Pack ajouté au panier :", formattedPack);
+
+      // ✅ Met à jour immédiatement l'état local
+      setCartPackIds((prev) => [...prev, pack.id]);
+
+      localStorage.setItem("packIsSelected", "true");
+      setPackIsSelected(true);
+    } catch (error) {
+      console.error("Erreur lors de l'ajout du pack :", error);
+    }
+  };
+
+  const removeFromLocalStorage = (consoleId: number) => {
+    const updated = selectedConsoles.filter((c) => c.id !== consoleId);
+    setSelectedConsoles(updated);
+
+    if (typeof window !== "undefined") {
+      const stored = localStorage.getItem("cart");
+      if (stored) {
+        try {
+          const cart = JSON.parse(stored);
+          const newCart = cart.filter((c: any) => c.id !== consoleId);
+          localStorage.setItem("cart", JSON.stringify(newCart));
+        } catch (e) {
+          console.error("Erreur suppression localStorage:", e);
+        }
+      }
+    }
+  };
+
+  const isConsoleInLocalStorage = (consoleId: number): boolean => {
+    if (typeof window === "undefined") return false;
+
+    const stored = localStorage.getItem("cart");
+    if (!stored) return false;
+
+    try {
+      const cart = JSON.parse(stored);
+      return Array.isArray(cart) && cart.some((c) => c.id === consoleId);
+    } catch (e) {
+      console.error("Erreur parsing localStorage:", e);
+      return false;
+    }
+  };
+
+  useEffect(() => {
+    if (fetchedConsoles.length === 0) {
+      fetch_consoles(setConsole);
+    }
+  }, []);
+
+  useEffect(() => {
+    const savedPackState = localStorage.getItem("packIsSelected");
+    if (savedPackState === "true") {
+      setPackIsSelected(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const storedCart = localStorage.getItem("cart");
+      if (storedCart) {
+        try {
+          const cartItems = JSON.parse(storedCart);
+          const ids = cartItems.map((item: any) => item.id);
+          setCartPackIds(ids);
+        } catch (err) {
+          console.error("Erreur parsing cart:", err);
+        }
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    console.log("fetchedConsoles a changé :", fetchedConsoles);
+  }, [fetchedConsoles]);
+
+  return (
+    <Container
+      paddingX={270}
+      paddingY={100}
+      className="flex flex-col items-center justify-center gap-32 h-fit"
+    >
+      <Typographie variant="h1" fontFamily="silkscreen" color="white">
+        Personnalise ta Retrobox !
+      </Typographie>
+      <div className="flex flex-col items-start justify-center w-full gap-10">
+        <Typographie variant="h2" fontFamily="silkscreen" color="white">
+          Pack déjà prêt pour vous
+        </Typographie>
+        <div className="flex items-center justify-center w-full gap-4 flex-wrap">
+          {gameboyPack.map((pack) => {
+            const isAlreadyInCart = cartPackIds.includes(pack.id);
+            return (
+              <div
+                className={clsx(
+                  isAlreadyInCart && "border border-white rounded-[20px]",
+                  "w-max h-max cursor-pointer transition-opacity duration-200 hover:opacity-80"
+                )}
+                key={pack.id}
+                onClick={() => handleAddPackToCart(pack)}
+              >
+                <Card
+                  type="forRetrobox"
+                  options={Object.values(pack.options)}
+                  price={pack.price}
+                  img={pack.src}
+                  title={pack.name}
+                  subtitle=""
+                />
+              </div>
+            );
+          })}
         </div>
-    );
+      </div>
+
+      {/* SECOND SECTION */}
+
+      <div className="flex flex-col items-start justify-center gap-15 w-full bg-[#45E5C5]/50 h-fit rounded-3xl p-18">
+        <div className="flex w-full items-center justify-start gap-10">
+          <Typographie variant="h2" fontFamily="silkscreen" color="white">
+            Consoles
+          </Typographie>
+          <Typographie variant="h4" fontFamily="Inter" color="white">
+            Cliquez pour choisir une console à tester !
+          </Typographie>
+        </div>
+        <div className="flex items-start justify-center gap-4">
+          {fetchedConsoles.map((console: ConsoleType, index: number) => {
+            const isSelected = selectedConsoles.some(
+              (c) => String(c.id) === String(console.id)
+            );
+
+            return (
+              <div key={index} className="flex flex-col items-center gap-2">
+                <div
+                  className={`w-max h-max cursor-pointer transition-opacity duration-200 ${
+                    isSelected ? "opacity-50" : "opacity-100"
+                  }`}
+                  onClick={() => toggleConsole(console)}
+                >
+                  <Card
+                    img={console.images?.[0]?.src ?? ""}
+                    title={console.name ?? "Error"}
+                    subtitle={console.description ?? "Error"}
+                  />
+                </div>
+
+                {/* 👇 Affiche ce bouton SEULEMENT si la console est sélectionnée ET déjà dans le localStorage */}
+                {/* {isSelected && isConsoleInLocalStorage(console.id) && (
+                  <button
+                    className="py-1 px-4 rounded-full border border-white text-white cursor-pointer hover:opacity-80 hover:bg-white/10 transition-all duration-200 ease-in-out mt-2"
+                    onClick={() => removeFromLocalStorage(console.id)}
+                  >
+                    Je possède déjà cette console
+                  </button>
+                )} */}
+              </div>
+            );
+          })}
+        </div>
+        <div className="w-max flex items-center justify-center gap-4">
+          <div className="w-max flex items-center justify-center gap-4">
+            {selectedConsoles.length > 0 &&
+            !selectedConsoles.some((c) => isConsoleInLocalStorage(c.id)) ? (
+              <button
+                className={clsx(
+                  packisSelected && "opacity-50 pointer-events-none",
+                  "py-1 px-4 rounded-full border border-white text-white cursor-pointer hover:opacity-80 hover:bg-white/10 transition-all duration-200 ease-in-out"
+                )}
+                onClick={saveToLocalStorage}
+              >
+                J’aimerai avoir cette console
+              </button>
+            ) : (
+              selectedConsoles.some((c) => isConsoleInLocalStorage(c.id)) && (
+                <button
+                  className={clsx(
+                    packisSelected && "opacity-50 pointer-events-none",
+                    "py-1 px-4 rounded-full border bg-white/10 border-white text-white cursor-pointer hover:opacity-80 hover:bg-white/10 transition-all duration-200 ease-in-out"
+                  )}
+                  onClick={() => {
+                    const toRemove = selectedConsoles.find((c) =>
+                      isConsoleInLocalStorage(c.id)
+                    );
+                    if (toRemove) removeFromLocalStorage(toRemove.id);
+                  }}
+                >
+                  Je possède déjà cette console
+                </button>
+              )
+            )}
+          </div>
+        </div>
+      </div>
+      <Boutique toggle={packisSelected} />
+      <TimeSlide />
+      {/* <div className="flex flex-col items-center justify-center gap-7">
+        <button
+          className="py-1 px-4 rounded-full border border-white text-white cursor-pointer hover:opacity-80 hover:bg-white/10 transition-all duration-200 ease-in-out"
+          onClick={saveToLocalStorage}
+        >
+          Valider la personnalisation
+        </button>
+        <div className="flex flex-col items-center justify-center gap-4">
+          <Typographie variant="h6" fontFamily="Inter" color="white">
+            Attention vous ne pouvez pas acheter un pack et une boîte
+            personnalisé en même temps.
+          </Typographie>
+          <Typographie variant="h6" fontFamily="Inter" color="white">
+            Vous ne pouvez prendre qu’un pack ou une boîte par commande.
+          </Typographie>
+        </div>
+      </div> */}
+    </Container>
+  );
 };
 
 export default retrobox;

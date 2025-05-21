@@ -1,9 +1,12 @@
 import { Typographie } from "@/_design/Typography";
 import { Number } from "@/_types/num_type";
 import { String } from "@/_types/string_type";
+import clsx from "clsx";
 import Image from "next/image";
 
 interface GameCardProps {
+  onClick: () => void;
+  isAdded: boolean;
   title: String;
   description: String;
   gender: {
@@ -19,6 +22,8 @@ interface GameCardProps {
 }
 
 export const GameCard = ({
+  onClick,
+  isAdded,
   title,
   description,
   gender,
@@ -31,15 +36,16 @@ export const GameCard = ({
       <Image
         src={images[0].src}
         alt={`image ${title}`}
-        width={250}
-        height={250}
+        width={200}
+        height={200}
+        className="w-[200px] h-[200px] bg-cover"
       />
       <div className="flex items-center justify-between w-full">
         <Typographie
           variant="h5"
           fontFamily="Inter"
           color="white"
-          className="capitalize"
+          className="capitalize max-w-30 w-full"
         >
           {title}
         </Typographie>
@@ -47,6 +53,15 @@ export const GameCard = ({
           {price} €
         </Typographie>
       </div>
+      <button
+        onClick={onClick}
+        className={clsx(
+          isAdded && "bg-white/20",
+          "py-1 px-4 rounded-full border border-white text-white cursor-pointer hover:opacity-80 hover:bg-white/10 transition-all duration-200 ease-in-out"
+        )}
+      >
+        Choisir
+      </button>
     </div>
   );
 };

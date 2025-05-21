@@ -1,4 +1,6 @@
 import { getSession } from "@/components/auth/session/getSession";
+import { Footer } from "@/components/footer/Footer";
+import { GameBtn } from "@/components/header/GameBtn";
 import { Navigation_Bar } from "@/components/navigation/Navigation_Bar";
 import { useSessionStore } from "@/context/Session.user";
 import "@/styles/globals.css";
@@ -30,7 +32,9 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Navigation_Bar path={pathname} />
+      <GameBtn />
       <Component {...pageProps} />
+      <Footer />
     </>
   );
 }

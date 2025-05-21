@@ -37,8 +37,8 @@ export const Navigation_Bar = ({ path = "/" }: Props) => {
         </CTA>
         <CTA
           variant="primary"
-          href="../routes/jeux"
-          className={path.includes("jeux") ? isActive : ""}
+          href="../routes/retrobox"
+          className={path.includes("retrobox") ? isActive : ""}
         >
           Retrobox
         </CTA>

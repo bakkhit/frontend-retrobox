@@ -8,7 +8,7 @@ import { consoles } from "@/utils/consoles_data";
 export const HowItWorks = () => {
   const [index, setIndex] = useState(0);
   const prevScrollY = useRef(0);
-  const debugIndicator = true;
+  const debugIndicator = false;
 
   useEffect(() => {
     const updateIndex = (direction: "up" | "down") => {

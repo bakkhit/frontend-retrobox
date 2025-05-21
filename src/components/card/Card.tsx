@@ -4,14 +4,30 @@ import { String } from "@/_types/string_type";
 import Image from "next/image";
 
 interface CardProps {
+  type?: "forRetrobox";
   img: String;
   title: String;
   subtitle: String;
 }
 
-export const Card = ({ img, title, subtitle }: CardProps) => {
+interface CardPropsForRetrobox extends CardProps {
+  type: "forRetrobox";
+  options: {
+    name: String;
+  }[];
+  price: Number;
+}
+
+type AllCardProps = CardProps | CardPropsForRetrobox;
+
+export const Card = (props: AllCardProps) => {
+  const { type, img, title, subtitle } = props;
+  const { options, price } = props as CardPropsForRetrobox;
   return (
-    <div className="relative flex flex-col items-center justify-center max-w-[330px] w-full rounded-[20px] gap-6 h-max bg-[#4642ED] p-5">
+    <div
+      className="relative flex flex-col items-center justify-start max-w-[330px] w-full rounded-[20px] gap-6 h-[572px] bg-[#4542ed55] p-5"
+      {...props}
+    >
       <div className="flex items-center justify-center relative w-full h-80 bg-[#0A1834] rounded-2xl px-3.5">
         <Image src={img} alt="img" width={290} height={370} />
       </div>
@@ -25,14 +41,40 @@ export const Card = ({ img, title, subtitle }: CardProps) => {
         >
           {title}
         </Typographie>
-        <Typographie
-          variant="h5"
-          color="white"
-          fontFamily="Inter"
-          className="w-full"
-        >
-          {subtitle}
-        </Typographie>
+        {!type ? (
+          <Typographie
+            variant="h5"
+            color="white"
+            fontFamily="Inter"
+            className="w-full"
+          >
+            {subtitle}
+          </Typographie>
+        ) : (
+          <>
+            {options.map((option, index) => (
+              <Typographie
+                key={index}
+                variant="h5"
+                color="white"
+                fontFamily="Inter"
+                className="w-full"
+              >
+                • {option.name}
+              </Typographie>
+            ))}
+          </>
+        )}
+        {type === "forRetrobox" && (
+          <Typographie
+            variant="h5"
+            color="white"
+            fontFamily="Inter"
+            className="w-full text-end"
+          >
+            {price}€
+          </Typographie>
+        )}
       </div>
     </div>
   );

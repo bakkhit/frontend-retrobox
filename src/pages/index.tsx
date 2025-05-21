@@ -4,20 +4,20 @@ import { Cards } from "@/components/card/Cards";
 import GameShow from "@/components/gameShow";
 import { Header } from "@/components/header/Header";
 import LatestLeft from "@/components/latestLeft";
+import GamesShower from "@/components/sections/gamesShower";
 import { HowItWorks } from "@/components/sections/howItWorks";
+import { NosSouvenirs } from "@/components/sections/memory";
 import { fetchGamesData } from "@/utils/games-data-fetch";
-import Image from "next/image";
 
 export default function Home() {
   const games = fetchGamesData();
 
   return (
     <div className="flex flex-col gap-32 h-fit">
+      <NosSouvenirs />
       <Header />
 
-      <Cards />
-
-      <LatestLeft
+      {/* <LatestLeft
         data={[
           {
             id: 1,
@@ -33,7 +33,7 @@ export default function Home() {
               "https://www.youtube.com/embed/VbmKRdinlus?si=V1MvQgvhTJkCiTmE",
           },
         ]}
-      />
+      /> */}
 
       <Typographie
         variant="h1"
@@ -43,83 +43,32 @@ export default function Home() {
       >
         Comment ça fonctionne ?
       </Typographie>
+
       <HowItWorks />
 
-      <section>
-        <div className="h-fit grid bg-slate-950">
-          <Boutique />
-          <footer className="h-[336px] bg-blue-700">
-            <div className="text-white mt-10 ml-[11%] text-4xl font-thin mb-[1%]">
-              <h2>Retro</h2>
-              <h2>Box</h2>
-            </div>
-            <div className="grid grid-cols-3 ml-[11%] w-fit gap-[70px]">
-              <div className="text-white font-thin">
-                <p className="font-medium mb-[1%]">Infos</p>
-                <a href="#" className="block">
-                  Mentions juridique
-                </a>
-                <a href="#" className="block">
-                  Politique de confidentialité
-                </a>
-                <a href="#" className="block">
-                  Conditions d'utilisation du site web
-                </a>
-                <a href="#" className="block">
-                  Plan du site
-                </a>
-              </div>
-              <div className="text-white font-thin">
-                <p className="font-medium mb-[1%]">Valeurs</p>
-                <a href="#" className="block">
-                  Environnement
-                </a>
-                <a href="#" className="block">
-                  Accessibilité
-                </a>
-                <a href="#" className="block">
-                  Confidentialité en ligne
-                </a>
-              </div>
-              <div className="text-white font-thin">
-                <p className="font-medium mb-[1%]">Connexion</p>
-                <a href="#" className="block">
-                  Application iOS
-                </a>
-                <a href="#" className="block">
-                  Application Android
-                </a>
-                <div className="flex gap-2 mt-2 l-0">
-                  <a href="#">
-                    <Image
-                      src="/images/Instagram.png"
-                      alt="Image Console"
-                      width={30}
-                      height={30}
-                    />
-                  </a>
-                  <a href="#">
-                    <Image
-                      src="/images/Facebook.png"
-                      alt="Image Console"
-                      width={30}
-                      height={30}
-                    />
-                  </a>
-                  <a href="#">
-                    <Image
-                      src="/images/Youtube.png"
-                      alt="Image Console"
-                      width={30}
-                      height={30}
-                    />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </footer>
-        </div>
-      </section>
+      <Typographie
+        variant="h1"
+        fontFamily="silkscreen"
+        color="white"
+        className="text-center"
+      >
+        Nos jeux disponible
+      </Typographie>
+
+      <GameShow
+        data={games.map((game) => ({
+          id: game.id,
+          name: game.name,
+          description: game.description,
+          price: game.price,
+          img: game.images[0]?.src || "/default-image.jpg", // Image par défaut si src est manquant
+          vignette: game.images[0]?.src || "/default-vignette.jpg", // Image par défaut pour la vignette
+        }))}
+      />
+
+      <GamesShower />
+
+      <Cards />
     </div>
   );
 }

@@ -3,6 +3,7 @@ import { Number } from "@/_types/num_type";
 import { String } from "@/_types/string_type";
 import { useEffect, useState } from "react";
 import { Card } from "./Card";
+import { useConsoleStore } from "@/context/Consoles.data";
 
 const BACK_URL = process.env.NEXT_PUBLIC_BACKEND_WEBSITE_URL;
 const BACK_VERSION = process.env.NEXT_PUBLIC_BACKEND_VERSION;
@@ -32,10 +33,11 @@ export const Cards = () => {
     };
     fetch_consoles();
   }, []);
+
   return (
     <section className="w-full h-max flex flex-col gap-22 items-center justify-center overflow-x-hidden">
       <Typographie variant="h1" color="white" fontFamily="silkscreen">
-        Console
+        Console disponible avec la box
       </Typographie>
       <div className="flex items-start justify-center gap-4">
         {consoles.map((console, index) => (

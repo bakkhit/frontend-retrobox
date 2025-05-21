@@ -6,6 +6,7 @@ import { Container } from "@/components/container/Container";
 import Checkout from "@/components/stripe/CTA.Stripe";
 import { useSessionStore } from "@/context/Session.user";
 import { CartPricesData } from "@/utils/cart_prices_data";
+import { gameboyPack } from "@/utils/gameboy_pack";
 import clsx from "clsx";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -22,7 +23,9 @@ type CartItem = {
 
 const Cart = () => {
   const { token, user } = useSessionStore();
-  const router = useRouter();
+  const [abonnementDuration, setAbonnementDuration] = useState<number | null>(
+    null
+  );
   const [items, setItems] = useState<CartItem>([]);
 
   const getItems = () => {
@@ -30,7 +33,7 @@ const Cart = () => {
       const cart = localStorage.getItem("cart");
       if (cart) {
         const cartItems = JSON.parse(cart);
-        setItems([cartItems]);
+        setItems(cartItems);
       }
     } catch (error) {
       console.error("Error loading cart:", error);
@@ -38,24 +41,52 @@ const Cart = () => {
     }
   };
 
-  const deleteItem = (index: number) => {
-    const updatedItems = [...items];
-    updatedItems.splice(0, 10);
+  const deleteItem = (id: number) => {
+    const updatedItems = items.filter((item) => item.id !== id);
     setItems(updatedItems);
-  };
 
-  useEffect(() => {
     if (typeof window !== "undefined") {
-      console.log("token", token);
-      if (!token) {
-        router.push("/");
+      localStorage.setItem("cart", JSON.stringify(updatedItems));
+
+      // 🔁 Vérifie s’il reste encore un pack dans le panier
+      const isStillPack = updatedItems.some(
+        (item) => isPack(item) // à définir plus bas
+      );
+
+      if (!isStillPack) {
+        localStorage.removeItem("packIsSelected");
       }
     }
-  }, [token, router]);
+  };
+
+  const getTotalPrice = () => {
+    return items.reduce((total, item) => total + parseFloat(item.price), 0);
+  };
+
+  const isPack = (item: any) => {
+    const packIds = gameboyPack.map((pack) => pack.id);
+    return packIds.includes(item.id);
+  };
+
+  // useEffect(() => {
+  //   if (typeof window !== "undefined") {
+  //     console.log("token", token);
+  //     if (!token) {
+  //       router.push("/");
+  //     }
+  //   }
+  // }, [token, router]);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
       getItems();
+    }
+  }, []);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const duration = parseFloat(localStorage.getItem("duration") ?? "0");
+      setAbonnementDuration(duration);
     }
   }, []);
 
@@ -78,7 +109,7 @@ const Cart = () => {
           items.map((item, index) => (
             <div
               key={index}
-              className="flex w-full items-start justify-between border-b border-white"
+              className="flex w-full items-start justify-between border-b pb-8 border-white"
             >
               <div className="flex flex-col h-full items-start justify-between gap-8">
                 <Typographie
@@ -149,13 +180,13 @@ const Cart = () => {
                   </Typographie>
                 </div>
               </div>
-              <div className="relative w-[300px] h-[300px] flex items-center">
+              <div className="relative w-[200px] h-[200px] flex items-center overflow-hidden">
                 <Image
-                  src="/images/Box-mockups.png"
+                  src={item.images[0].src}
                   alt={item.name}
                   width={300}
                   height={300}
-                  className="absolute object-cover"
+                  className="absolute object-cover w-max h-max bg-cover"
                 />
               </div>
               <CTA
@@ -165,16 +196,10 @@ const Cart = () => {
               >
                 Supprimer
               </CTA>
-              <Checkout
-                name={user.name}
-                amount={parseFloat(item.price)}
-                customerEmail={user.email}
-                customerName={user.name}
-              />
             </div>
           ))
         ) : (
-          <div className="p-4 text-center">
+          <div className="p-4 text-center text-white">
             <p>Your cart is empty</p>
           </div>
         )}
@@ -204,7 +229,8 @@ const Cart = () => {
                 fontFamily="Inter"
                 className="text-lg font-bold"
               >
-                {item.price} €
+                {index === 0 ? abonnementDuration : item.price}{" "}
+                {index === 0 ? "mois" : "€"}
               </Typographie>
             </div>
           ))}
@@ -229,9 +255,19 @@ const Cart = () => {
               isMedium
               className="text-lg font-bold"
             >
-              x €
+              {getTotalPrice()} €
             </Typographie>
           </div>
+          {items.length > 0 && (
+            <div className="w-full mt-6">
+              <Checkout
+                name={user.name}
+                amount={getTotalPrice()}
+                customerEmail={user.email}
+                customerName={user.name}
+              />
+            </div>
+          )}
         </div>
       </div>
     </Container>

@@ -1,111 +1,123 @@
-import Image from "next/image";
-import { useState, useEffect } from "react";
-import { Container } from "./container/Container";
-import { Typographie } from "@/_design/Typography";
-import clsx from "clsx";
+import React, { useEffect, useState } from "react";
 
-type Game = {
+type GameImage = {
   id: number;
-  name: string;
-  description: string;
-  price: number;
-  console?: string;
-  img: string;
-  vignette: string;
-  pegi?: number;
-  genre?: string;
+  src: string;
+  gameId: number;
+  game: {
+    id: number;
+    name: string;
+    description: string;
+    price: number;
+    stars: number;
+  };
 };
 
-type Props = {
-  data: Game[];
-};
-
-const GameShow = ({ data }: Props) => {
-  const [selectedGame, setSelectedGame] = useState<Game | null>(null);
+const GameShow = () => {
+  const [images, setImages] = useState<GameImage[]>([]);
+  const [selectedGame, setSelectedGame] = useState<GameImage | null>(null);
+  const [vignettes, setVignettes] = useState<GameImage[]>([]);
 
   useEffect(() => {
-    if (data && data.length > 0) {
-      setSelectedGame(data[0]);
-    }
-  }, [data]);
+    fetch("/api/games/images")
+      .then((res) => {
+        if (!res.ok) throw new Error("HTTP status " + res.status);
+        return res.json();
+      })
+      .then((data) => {
+        const imgs = data.slice(0, 6);
+        setImages(imgs);
+        if (imgs.length > 0) setSelectedGame(imgs[0]);
+      })
+      .catch(() => setImages([]));
+  }, []);
 
-  if (!selectedGame) {
-    return null;
-  }
+  // Fetch vignette background
+  useEffect(() => {
+    fetch("/api/games/vignette")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("Vignettes API:", data); // Ajoute ce log
+        if (Array.isArray(data)) setVignettes(data);
+      })
+      .catch((err) => {
+        console.error("Erreur vignette:", err);
+        setVignettes([]);
+      });
+  }, []);
+
+  const backgroundUrl =
+    selectedGame && vignettes.length
+      ? vignettes.find((v) => v.gameId === selectedGame.gameId)?.src || ""
+      : "";
+
+  if (!selectedGame) return null;
 
   return (
-    <Container
-      paddingY={0}
-      paddingX={0}
-      className="flex flex-col items-center justify-center"
+    <section
+      className="relative w-full h-screen bg-black flex flex-col items-center justify-center py-12 bg-cover bg-center bg-no-repeat"
+      style={{
+        backgroundImage: backgroundUrl ? `url(${backgroundUrl})` : undefined,
+      }}
     >
-      <section className="relative w-full h-max transition-all duration-500">
-        <div
-          className="absolute top-0 left-0 w-[30%] h-full z-0"
-          style={{
-            background: `linear-gradient(to right, #000000, transparent)`,
-          }}
-        ></div>
+      {/* Dégradé gauche */}
+      <div
+        className="absolute top-0 left-0 w-[30%] h-full z-0 pointer-events-none"
+        style={{
+          background: `linear-gradient(to right, #050D1D, transparent)`,
+        }}
+      ></div>
 
-        <div
-          className="relative w-full"
-          style={{ height: "clamp(400px, 41.667vw, 800px)" }}
-        >
-          <Image
-            src={selectedGame.img || "/default-image.jpg"}
-            alt="bg image"
-            fill
-            className="object-cover aspect-video object-center transition-transform duration-500"
-          />
+      {/* Texte jeu sélectionné */}
+      <div className="absolute bottom-[13vw] left-[10vw] text-white p-5 rounded-xl max-w-[30%] z-10 bg-black/60">
+        <h2 className="whiteNeon text-[2vw] font-bold mb-2">
+          {selectedGame.game.name}
+        </h2>
+        <p className="mb-2 text-[1vw] font-md">
+          {selectedGame.game.description}
+        </p>
+      </div>
 
-          <div
-            className="left-[180px] text-white w-full text-[1vw] z-10 relative"
-            style={{ top: "clamp(70px, 10.417vw, 200px)" }}
-          >
-            <Typographie
-              variant="h2"
-              color="white"
-              fontFamily="Inter"
-              isBold
-              className="mb-2"
+      {/* Vignettes des autres jeux */}
+      <div className="absolute bottom-[4vw] left-1/2 -translate-x-1/2 z-10 flex justify-center">
+        <div className="flex gap-[2vw] w-full justify-center items-center">
+          {images.map((img) => (
+            <div
+              key={img.id}
+              className={`flex p-1 items-center justify-center rounded-2xl border-4 cursor-pointer
+      transition-all duration-500
+      ${
+        selectedGame.id === img.id
+          ? "border-white shadow-[0_0_24px_4px_rgba(255,255,255,0.5)]"
+          : "border-transparent"
+      }
+    `}
+              style={{
+                width: "12vw",
+                height: "6vw",
+                minWidth: "140px",
+                minHeight: "140px",
+                maxWidth: "220px",
+                maxHeight: "110px",
+                overflow: "hidden",
+              }}
+              onClick={() => setSelectedGame(img)}
             >
-              {selectedGame.name}
-            </Typographie>
-            <Typographie
-              variant="h5"
-              color="white"
-              fontFamily="Inter"
-              className="mb-4"
-            >
-              {selectedGame.description}
-            </Typographie>
-          </div>
-
-          <div className="absolute bottom-14 right-1/2 translate-x-1/2 flex justify-center gap-4 z-10">
-            {data.slice(0, 6).map((game) => (
-              <div
-                key={game.id}
-                onClick={() => setSelectedGame(game)}
-                className={clsx(
-                  "relative w-52 h-36 rounded-3xl cursor-pointer transition-transform duration-300 border-5",
-                  selectedGame.id === game.id
-                    ? "border-white scale-105"
-                    : "border-transparent hover:scale-105"
-                )}
-              >
-                <Image
-                  key={game.id}
-                  src={game.vignette || "/default-vignette.jpg"}
-                  fill
-                  alt={game.name}
-                  className="absolute rounded-3xl p-1 object-cover"
-                />
-              </div>
-            ))}
-          </div>
+              <img
+                src={img.src}
+                alt={img.game.name}
+                className="rounded-xl"
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                }}
+              />
+            </div>
+          ))}
         </div>
-      </section>
-    </Container>
+      </div>
+    </section>
   );
 };
 
