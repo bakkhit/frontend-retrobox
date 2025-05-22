@@ -1,3 +1,5 @@
+import { Typographie } from "@/_design/Typography";
+import clsx from "clsx";
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
 
@@ -48,11 +50,24 @@ const Jeux = () => {
       folderName: "ps_vita",
       fileName: "ps-vita-card-front.png",
     },
+    {
+      folderName: "xbox",
+      fileName: "xbox-card-front.png",
+    },
+    {
+      folderName: "nintendo_64",
+      fileName: "nintendo-64-card-front.png",
+    },
   ];
 
   const [cards, setCards] = useState<ConsoleImage[]>([]);
   const [flippedCards, setFlippedCards] = useState<number[]>([]);
   const [matchedCards, setMatchedCards] = useState<number[]>([]);
+  const [instruction, setInstruction] = useState<boolean>(true);
+
+  useEffect(() => {
+    setInstruction(true);
+  }, []);
 
   useEffect(() => {
     const shuffledCards = [...consolesImages, ...consolesImages].sort(
@@ -69,6 +84,7 @@ const Jeux = () => {
     ) {
       return;
     }
+    setInstruction(false);
 
     const newFlippedCards = [...flippedCards, index];
     setFlippedCards(newFlippedCards);
@@ -83,8 +99,73 @@ const Jeux = () => {
 
   return (
     <div className="w-full h-max relative flex flex-col items-center justify-center">
-      <h1 className="text-3xl font-bold mb-8">Console Memory Game</h1>
-      <div className="grid grid-cols-5 gap-4 p-4">
+      {/* Instruction */}
+      <div
+        className={clsx(
+          instruction ? "flex" : "hidden",
+          "flex-col absolute z-20 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 items-start justify-center gap-3 bg-[#247968] rounded-3xl p-5 max-w-[500px] w-full"
+        )}
+      >
+        <div className="w-full flex items-center justify-between">
+          <Typographie variant="h5" fontFamily="Inter" color="white">
+            Règle du jeu
+          </Typographie>
+          <button
+            onClick={() => setInstruction(false)}
+            className="cursor-pointer hover:opacity-70"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+            >
+              <path
+                d="M18 6L6 18M6 6L18 18"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+        </div>
+        <hr className="bg-white border-none w-full h-[1px]" />
+        <Typographie variant="h6" fontFamily="Inter" color="white">
+          Toutes les cartes sont faces cachées. Vous devez retourner deux
+          cartes. Si les images sont identiques,vous gagnez la paire constituée
+          et rejouez. Au bout des 30 coups vous perdez
+        </Typographie>
+      </div>
+      {/* FIN Instruction */}
+      {/* POPUP */}
+      <div
+        className={clsx(
+          matchedCards.length === 4 ? "flex" : "hidden",
+          "flex-col absolute z-20 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 items-start justify-center gap-3 bg-[#247968] rounded-3xl p-5 max-w-[500px] w-full"
+        )}
+      >
+        <Typographie variant="h5" fontFamily="Inter" color="white">
+          Coupon de réduction
+        </Typographie>
+        <hr className="bg-white border-none w-full h-[1px]" />
+        <Typographie variant="h6" fontFamily="Inter" color="white">
+          Bien joué ! Vous avez gagné un coupon de réduction de 10% sur votre
+          prochaine commande.
+        </Typographie>
+        <Typographie
+          variant="h6"
+          fontFamily="Inter"
+          color="white"
+          isMedium
+          className="bg-white/10 p-2 rounded-lg"
+        >
+          GAGNANT10
+        </Typographie>
+      </div>
+      {/* FIN POPUP */}
+      <div className="grid grid-cols-8 gap-4 p-4">
         {cards.map((console, index) => (
           <div
             key={index}
@@ -114,3 +195,4 @@ const Jeux = () => {
 };
 
 export default Jeux;
+ 

@@ -22,6 +22,6 @@ export const Ellipse = ({ left, top, backgroundColor, width, blur, className }: 
     };
 
     return (
-        <div className={clsx(className, "absolute")} style={ellipseStyle}></div>
+        <div className={clsx(className, "absolute ellipse-anim")} style={ellipseStyle}></div>
     );
 };

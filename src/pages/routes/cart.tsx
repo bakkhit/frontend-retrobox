@@ -11,6 +11,7 @@ import clsx from "clsx";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { Ellipse } from "@/components/pattern/ellipse";
 
 type CartItem = {
   id: Number;
@@ -100,6 +101,10 @@ const Cart = () => {
       paddingY={100}
       className="flex flex-col gap-12 items-start justify-start"
     >
+      <Ellipse top={-10} left={82} backgroundColor="#4845E5" width={20} blur={150} className=""/>
+      <Ellipse top={0} left={-30} backgroundColor="#45E5C5" width={50} blur={250} className=""/>
+      <Ellipse top={30} left={20} backgroundColor="#4845E5" width={30} blur={250} className=""/>
+      <Ellipse top={-20} left={-10} backgroundColor="#4845E5" width={20} blur={150} className=""/>
       <div className="w-full flex flex-col gap-5 items-start justify-center bg-[rgba(69,229,197,0.5)] rounded-3xl p-10">
         <Typographie variant="h3" color="white" fontFamily="Inter" isMedium>
           Panier

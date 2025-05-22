@@ -1,11 +1,19 @@
+import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
 
-export const GameBtn = () => {
+interface Props {
+  pathName: string;
+}
+
+export const GameBtn = ({ pathName }: Props) => {
   return (
     <Link
       href="/routes/jeux"
-      className="w-60 h-60 overflow-hidden fixed bottom-0 right-2 hover:opacity-70 transition-all duration-150 ease-in-out z-20"
+      className={clsx(
+        pathName.includes("/jeux") ? "hidden" : "block",
+        "w-60 h-60 overflow-hidden fixed bottom-0 right-2 hover:opacity-70 transition-all duration-150 ease-in-out z-20"
+      )}
     >
       <Image
         src="/svg/GameBtnIcone.svg"
@@ -17,3 +25,4 @@ export const GameBtn = () => {
     </Link>
   );
 };
+ 

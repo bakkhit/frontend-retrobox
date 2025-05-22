@@ -22,8 +22,8 @@ export const Header = () => {
   return (
     <Container paddingX={270} paddingY={100} className="overflow-x-hidden">
       <section className="flex flex-col lg:flex-row justify-center items-center md:justify-between h-fit">
-        <div className="flex flex-col items-start justify- gap-8 z-10 w-max h-max">
-          <Typographie variant="h2" fontFamily="silkscreen" color="neon" isBold>
+        <div className="flex flex-col items-start justify- gap-20 z-10 w-[60vw] h-max">
+          <Typographie variant="h1" fontFamily="silkscreen" color="neon" isBold>
             Et si on retournait dans le passé ?
           </Typographie>
           <Typographie
@@ -56,7 +56,7 @@ export const Header = () => {
           <Image
             src="/images/Box-mockups.png"
             alt="Image Console"
-            className="relative lg:absolute top-0 object-cover"
+            className="relative lg:absolute top-9 object-cover"
             fill
           />
         </div>

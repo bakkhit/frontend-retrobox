@@ -8,6 +8,7 @@ import { useConsoleStore } from "@/context/Consoles.data";
 import { gameboyPack } from "@/utils/gameboy_pack";
 import clsx from "clsx";
 import { useEffect, useState } from "react";
+import { Ellipse } from "@/components/pattern/ellipse";
 
 type ConsoleType = {
   id: number;
@@ -143,8 +144,18 @@ const retrobox = () => {
     <Container
       paddingX={270}
       paddingY={100}
-      className="flex flex-col items-center justify-center gap-32 h-fit"
+      className="flex flex-col items-center justify-center gap-32 h-fit z-1"
     >
+
+      <Ellipse top={-10} left={-10} backgroundColor="#4845E5" width={20} blur={150} className=""/>
+      <Ellipse top={5} left={-10} backgroundColor="#4845E5" width={20} blur={150} className=""/>
+      <Ellipse top={45} left={10} backgroundColor="#4845E5" width={20} blur={150} className=""/>
+      <Ellipse top={50} left={0} backgroundColor="#4845E5" width={20} blur={150} className=""/>
+      <Ellipse top={15} left={70} backgroundColor="#45E5C5" width={50} blur={250} className=""/>
+      <Ellipse top={80} left={10} backgroundColor="#45E5C5" width={80} blur={600} className=""/>
+      <Ellipse top={100} left={0} backgroundColor="#45E5C5" width={50} blur={600} className=""/>
+      <Ellipse top={80} left={70} backgroundColor="#4845E5" width={50} blur={250} className=""/>
+      <Ellipse top={250} left={0} backgroundColor="#4845E5" width={50} blur={350} className=""/>
       <Typographie variant="h1" fontFamily="silkscreen" color="white">
         Personnalise ta Retrobox !
       </Typographie>
@@ -159,7 +170,7 @@ const retrobox = () => {
               <div
                 className={clsx(
                   isAlreadyInCart && "border border-white rounded-[20px]",
-                  "w-max h-max cursor-pointer transition-opacity duration-200 hover:opacity-80"
+                  "w-max h-max cursor-pointer z-1 transition-opacity duration-200 hover:opacity-80"
                 )}
                 key={pack.id}
                 onClick={() => handleAddPackToCart(pack)}

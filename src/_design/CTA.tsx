@@ -50,7 +50,7 @@ export const CTA = ({
         isDisabled && "cursor-not-allowed opacity-50",
         className,
         variantSwitcher,
-        "h-9"
+        "h-9 flex items-center justify-center"
       )}
       disabled={isDisabled || isLoading}
       onClick={isDisabled || isLoading ? (e) => e.preventDefault() : onClick}

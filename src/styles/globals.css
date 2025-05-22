@@ -43,7 +43,7 @@
   --leading-h3: calc(var(--h3) - 5px);
   --leading-h4: calc(var(--h4) + 8px);
   --leading-h5: calc(var(--h5) + 5px);
-  --leading-h6: calc(var(--h6) - 5px);
+  --leading-h6: calc(var(--h6) + 5px);
 }
 
 input {
@@ -126,4 +126,22 @@ body {
   background: var(--background);
   margin: 0;
   z-index: -1;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+.ellipse-anim {
+  animation: ellipse-anim 8s ease-in-out infinite;
+}
+
+@keyframes ellipse-anim {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
