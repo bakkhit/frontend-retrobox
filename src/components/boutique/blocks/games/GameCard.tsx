@@ -3,6 +3,7 @@ import { Number } from "@/_types/num_type";
 import { String } from "@/_types/string_type";
 import clsx from "clsx";
 import Image from "next/image";
+import { useEffect } from "react";
 
 interface GameCardProps {
   onClick: () => void;
@@ -31,6 +32,9 @@ export const GameCard = ({
   price,
   images,
 }: GameCardProps) => {
+  useEffect(() => {
+    console.log(images);
+  }, []);
   return (
     <div className="flex flex-col gap-2.5 items-start w-max justify-center text-white">
       <Image

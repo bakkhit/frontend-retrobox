@@ -146,16 +146,78 @@ const retrobox = () => {
       paddingY={100}
       className="flex flex-col items-center justify-center gap-32 h-fit z-1"
     >
-
-      <Ellipse top={-10} left={-10} backgroundColor="#4845E5" width={20} blur={150} className=""/>
-      <Ellipse top={5} left={-10} backgroundColor="#4845E5" width={20} blur={150} className=""/>
-      <Ellipse top={45} left={10} backgroundColor="#4845E5" width={20} blur={150} className=""/>
-      <Ellipse top={50} left={0} backgroundColor="#4845E5" width={20} blur={150} className=""/>
-      <Ellipse top={15} left={70} backgroundColor="#45E5C5" width={50} blur={250} className=""/>
-      <Ellipse top={80} left={10} backgroundColor="#45E5C5" width={80} blur={600} className=""/>
-      <Ellipse top={100} left={0} backgroundColor="#45E5C5" width={50} blur={600} className=""/>
-      <Ellipse top={80} left={70} backgroundColor="#4845E5" width={50} blur={250} className=""/>
-      <Ellipse top={250} left={0} backgroundColor="#4845E5" width={50} blur={350} className=""/>
+      <Ellipse
+        top={-10}
+        left={-10}
+        backgroundColor="#4845E5"
+        width={20}
+        blur={150}
+        className=""
+      />
+      <Ellipse
+        top={5}
+        left={-10}
+        backgroundColor="#4845E5"
+        width={20}
+        blur={150}
+        className=""
+      />
+      <Ellipse
+        top={45}
+        left={10}
+        backgroundColor="#4845E5"
+        width={20}
+        blur={150}
+        className=""
+      />
+      <Ellipse
+        top={50}
+        left={0}
+        backgroundColor="#4845E5"
+        width={20}
+        blur={150}
+        className=""
+      />
+      <Ellipse
+        top={15}
+        left={70}
+        backgroundColor="#45E5C5"
+        width={50}
+        blur={250}
+        className=""
+      />
+      <Ellipse
+        top={80}
+        left={10}
+        backgroundColor="#45E5C5"
+        width={80}
+        blur={600}
+        className=""
+      />
+      <Ellipse
+        top={100}
+        left={0}
+        backgroundColor="#45E5C5"
+        width={50}
+        blur={600}
+        className=""
+      />
+      <Ellipse
+        top={80}
+        left={70}
+        backgroundColor="#4845E5"
+        width={50}
+        blur={250}
+        className=""
+      />
+      <Ellipse
+        top={250}
+        left={0}
+        backgroundColor="#4845E5"
+        width={50}
+        blur={350}
+        className=""
+      />
       <Typographie variant="h1" fontFamily="silkscreen" color="white">
         Personnalise ta Retrobox !
       </Typographie>
@@ -200,7 +262,7 @@ const retrobox = () => {
             Cliquez pour choisir une console à tester !
           </Typographie>
         </div>
-        <div className="flex items-start justify-center gap-4">
+        <div className="flex overflow-x-scroll w-full items-start justify-start gap-4">
           {fetchedConsoles.map((console: ConsoleType, index: number) => {
             const isSelected = selectedConsoles.some(
               (c) => String(c.id) === String(console.id)
@@ -220,16 +282,6 @@ const retrobox = () => {
                     subtitle={console.description ?? "Error"}
                   />
                 </div>
-
-                {/* 👇 Affiche ce bouton SEULEMENT si la console est sélectionnée ET déjà dans le localStorage */}
-                {/* {isSelected && isConsoleInLocalStorage(console.id) && (
-                  <button
-                    className="py-1 px-4 rounded-full border border-white text-white cursor-pointer hover:opacity-80 hover:bg-white/10 transition-all duration-200 ease-in-out mt-2"
-                    onClick={() => removeFromLocalStorage(console.id)}
-                  >
-                    Je possède déjà cette console
-                  </button>
-                )} */}
               </div>
             );
           })}

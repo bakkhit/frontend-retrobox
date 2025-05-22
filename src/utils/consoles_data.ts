@@ -3,14 +3,14 @@ export const consoles = [
     id: 1,
     name: "PlayStation 1",
     description:
-      "Découvrez les classiques des années 90 avec la PlayStation 1, la console qui a révolutionné le monde du jeu vidéo.",
+      "Faites le choix de votre première console pour vivre une expérience de jeu unique et vous remémorer vos anciens souvenirs cette console n’est pas échangeable après l’achat de la box",
     src: "/images/consoleImage1.png",
   },
   {
     id: 2,
     name: "Nintendo 64",
     description:
-      "Plongez dans l'univers coloré et dynamique de la Nintendo 64, une légende du gaming rétro.",
+      "Choisissez votre premier jeu, par la suite selon votre abonnement vous allez reçevoir un jeu aléatoire tous les mois",
     src: "/images/console/le-jeu.png",
   },
 ];

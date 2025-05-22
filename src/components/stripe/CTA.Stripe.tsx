@@ -95,7 +95,7 @@ const Checkout: React.FC<{
   <Elements stripe={stripePromise}>
     <CheckoutForm
       name={name}
-      amount={amount}
+      amount={amount + 4.99 + 2.75}
       customerEmail={customerEmail}
       customerName={customerName}
     />

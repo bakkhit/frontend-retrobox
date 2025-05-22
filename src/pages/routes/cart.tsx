@@ -61,7 +61,11 @@ const Cart = () => {
   };
 
   const getTotalPrice = () => {
-    return items.reduce((total, item) => total + parseFloat(item.price), 0);
+    return (
+      items.reduce((total, item) => total + parseFloat(item.price), 0) +
+      4.99 +
+      2.75
+    );
   };
 
   const isPack = (item: any) => {
@@ -101,10 +105,38 @@ const Cart = () => {
       paddingY={100}
       className="flex flex-col gap-12 items-start justify-start"
     >
-      <Ellipse top={-10} left={82} backgroundColor="#4845E5" width={20} blur={150} className=""/>
-      <Ellipse top={0} left={-30} backgroundColor="#45E5C5" width={50} blur={250} className=""/>
-      <Ellipse top={30} left={20} backgroundColor="#4845E5" width={30} blur={250} className=""/>
-      <Ellipse top={-20} left={-10} backgroundColor="#4845E5" width={20} blur={150} className=""/>
+      <Ellipse
+        top={-10}
+        left={82}
+        backgroundColor="#4845E5"
+        width={20}
+        blur={150}
+        className=""
+      />
+      <Ellipse
+        top={0}
+        left={-30}
+        backgroundColor="#45E5C5"
+        width={50}
+        blur={250}
+        className=""
+      />
+      <Ellipse
+        top={30}
+        left={20}
+        backgroundColor="#4845E5"
+        width={30}
+        blur={250}
+        className=""
+      />
+      <Ellipse
+        top={-20}
+        left={-10}
+        backgroundColor="#4845E5"
+        width={20}
+        blur={150}
+        className=""
+      />
       <div className="w-full flex flex-col gap-5 items-start justify-center bg-[rgba(69,229,197,0.5)] rounded-3xl p-10">
         <Typographie variant="h3" color="white" fontFamily="Inter" isMedium>
           Panier
@@ -227,6 +259,10 @@ const Cart = () => {
                 className="text-lg font-bold"
               >
                 {item.name}
+                {index === 0 ? " - " : " "}
+                <span className="underline underline-offset-4">
+                  {index === 0 && "(mois prochain)"}
+                </span>
               </Typographie>
               <Typographie
                 variant="h6"
@@ -236,6 +272,11 @@ const Cart = () => {
               >
                 {index === 0 ? abonnementDuration : item.price}{" "}
                 {index === 0 ? "mois" : "€"}
+                {index === 0 ? " - " : " "}
+                <span className="font-semibold">
+                  {index === 0 && 60 * (abonnementDuration ?? 1)}
+                  {index === 0 && "€/mois"}
+                </span>
               </Typographie>
             </div>
           ))}

@@ -32,9 +32,9 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Navigation_Bar path={pathname} />
-      <GameBtn pathName={pathname}/>
+      <GameBtn pathName={pathname} />
       <Component {...pageProps} />
-      <Footer />
+      <Footer path={pathname} />
     </>
   );
 }

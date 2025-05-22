@@ -54,6 +54,7 @@ export const SignIn = ({ onClick }: SignInProps) => {
           type="email"
           name="email"
           placeholder="Adresse e-mail"
+          className="w-full"
           autoComplete="email"
           value={form.email}
           onChange={(e) => setForm({ ...form, email: e.target.value })}
@@ -62,6 +63,7 @@ export const SignIn = ({ onClick }: SignInProps) => {
           type="password"
           name="password"
           placeholder="Mot de passe"
+          className="w-full"
           autoComplete="current-password"
           value={form.password}
           onChange={(e) => setForm({ ...form, password: e.target.value })}

@@ -9,7 +9,7 @@
 }
 
 :root {
-  --background: #050D1D;
+  --background: #050d1d;
   --foreground: #ffffff;
 
   --primary: #4642ed;
@@ -49,7 +49,6 @@
 input {
   background-color: #0a1834;
   color: white;
-  width: 100%;
   border-radius: 24px;
   padding: 10px 20px;
 }

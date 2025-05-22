@@ -142,7 +142,7 @@ const Jeux = () => {
       {/* POPUP */}
       <div
         className={clsx(
-          matchedCards.length === 4 ? "flex" : "hidden",
+          matchedCards.length === 24 ? "flex" : "hidden",
           "flex-col absolute z-20 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 items-start justify-center gap-3 bg-[#247968] rounded-3xl p-5 max-w-[500px] w-full"
         )}
       >
@@ -195,4 +195,3 @@ const Jeux = () => {
 };
 
 export default Jeux;
- 

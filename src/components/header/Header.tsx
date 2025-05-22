@@ -42,7 +42,7 @@ export const Header = () => {
               </Typographie>
             ))}
           </div>
-          <CTA variant="primary" href="../routes/jeux">
+          <CTA variant="primary" href="../routes/retrobox">
             {data?.button}
           </CTA>
         </div>

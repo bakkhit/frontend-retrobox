@@ -1,13 +1,21 @@
 import Image from "next/image";
 import { Container } from "../container/Container";
 import { Typographie } from "@/_design/Typography";
+import clsx from "clsx";
 
-export const Footer = () => {
+interface FooterProps {
+  path: string;
+}
+
+export const Footer = ({ path }: FooterProps) => {
   return (
     <Container
       paddingX={270}
       paddingY={100}
-      className="footer flex items-center justify-between bg-[#45E5C5]/50 w-full h-max mt-10"
+      className={clsx(
+        path.includes("/success") || (path.includes("/jeux") && "hidden"),
+        "footer flex items-center justify-between bg-[#45E5C5]/50 w-full h-max mt-10"
+      )}
     >
       {/* LEFT PART */}
       <div className="flex flex-col gap-5.5 items-start justify-center">

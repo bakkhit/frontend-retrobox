@@ -2,6 +2,7 @@ import { CTA } from "@/_design/CTA";
 import { String } from "@/_types/string_type";
 import { useSessionStore } from "@/context/Session.user";
 import { authClient } from "@/utils/auth-client";
+import clsx from "clsx";
 import Image from "next/image";
 import { useRouter } from "next/router";
 
@@ -20,7 +21,12 @@ export const Navigation_Bar = ({ path = "/" }: Props) => {
   };
 
   return (
-    <section className="topBar sticky top-0 w-full h-20 z-20 flex gap-10 lg:gap-[180px] justify-between items-center px-4">
+    <section
+      className={clsx(
+        path.includes("/success") && "hidden",
+        "topBar sticky top-0 w-full h-20 z-20 flex gap-10 lg:gap-[180px] justify-between items-center px-4"
+      )}
+    >
       <Image
         src="/images/logo/logo-retro-box.png"
         alt="Logo Retro Box"

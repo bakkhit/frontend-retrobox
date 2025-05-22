@@ -41,10 +41,19 @@ export const Filter = () => {
       const PEGIData = await fetchFilterData({ src: "PEGIS" });
       const consoleData = await fetchFilterData({ src: "consoles" });
 
+      const removeDuplicates = (items: FilterItem[]): FilterItem[] => {
+        const seen = new Set<String>();
+        return items.filter((item) => {
+          if (seen.has(item.name)) return false;
+          seen.add(item.name);
+          return true;
+        });
+      };
+
       setFilters({
-        gender: genderData,
-        PEGI: PEGIData,
-        console: consoleData,
+        gender: removeDuplicates(genderData),
+        PEGI: removeDuplicates(PEGIData),
+        console: removeDuplicates(consoleData),
       });
     };
 
@@ -61,16 +70,16 @@ export const Filter = () => {
       <Typographie variant="h4" fontFamily="Inter" color="white" isBold>
         {title}
       </Typographie>
-      <div className="flex items-start justify-start flex-col gap-2">
+      <div className="flex items-start justify-start flex-col gap-2 w-max">
         {items.map((item) => (
           <label
             key={item.name}
-            className="flex items-center gap-3 cursor-pointer"
+            className="flex items-center gap-3 cursor-pointer w-max"
           >
             <input
               type="checkbox"
               name={item.name}
-              className="cursor-pointer"
+              className="cursor-pointer w-max"
               checked={selected.includes(item.name)}
               onChange={() => toggleFn(item.name)}
             />
@@ -78,7 +87,7 @@ export const Filter = () => {
               variant="h5"
               fontFamily="Inter"
               color="white"
-              className="capitalize cursor-pointer"
+              className="capitalize cursor-pointer w-max"
             >
               {item.name}
             </Typographie>
